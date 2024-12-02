@@ -5,9 +5,16 @@ namespace Platformer.Game.Enemy.Base
 {
     public sealed class EnemyAttackAgro : EnemyBehaviour
     {
+        #region Variables
+
         [SerializeField] private TriggerObserver _triggerObserver;
         [SerializeField] private EnemyMovement _movement;
         [SerializeField] private EnemyAttack _attack;
+
+        #endregion
+
+        #region Unity lifecycle
+
         private void OnEnable()
         {
             _triggerObserver.OnEntered += TriggerEnteredCallback;
@@ -19,6 +26,11 @@ namespace Platformer.Game.Enemy.Base
             _triggerObserver.OnEntered -= TriggerEnteredCallback;
             _triggerObserver.OnExited -= TriggerExitedCallback;
         }
+
+        #endregion
+
+        #region Private methods
+
         private void TriggerEnteredCallback(Collider2D col)
         {
             _movement.Deactivate();
@@ -30,5 +42,7 @@ namespace Platformer.Game.Enemy.Base
             _attack.StopAttack();
             _movement.Activate();
         }
+
+        #endregion
     }
 }

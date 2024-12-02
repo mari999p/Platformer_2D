@@ -2,16 +2,28 @@ using UnityEngine;
 
 namespace Platformer.Game.Enemy.Base
 {
-    public abstract class  EnemyAttack: EnemyBehaviour
+    public abstract class EnemyAttack : EnemyBehaviour
     {
+        #region Variables
+
         [Header(nameof(EnemyAttack))]
         [SerializeField] private float _attackDelay = 1f;
         [SerializeField] private EnemyAnimation _animation;
 
         private bool _needAttack;
         private float _nextAttackTime;
+
+        #endregion
+
+        #region Properties
+
         protected EnemyAnimation Animation => _animation;
         protected Transform Target { get; private set; }
+
+        #endregion
+
+        #region Unity lifecycle
+
         protected virtual void Update()
         {
             if (!_needAttack)
@@ -25,10 +37,11 @@ namespace Platformer.Game.Enemy.Base
                 OnPerformAttack();
             }
         }
-        public void PerformAttackForced()
-        {
-            OnPerformAttack();
-        }
+
+        #endregion
+
+        #region Public methods
+        
 
         public void StartAttack(Transform target)
         {
@@ -41,11 +54,15 @@ namespace Platformer.Game.Enemy.Base
             _needAttack = false;
         }
 
-       
+        #endregion
 
-        protected virtual void OnPerformAttack()
+        #region Protected methods
+
+        private void OnPerformAttack()
         {
             _animation.PlayAttack();
         }
+
+        #endregion
     }
 }

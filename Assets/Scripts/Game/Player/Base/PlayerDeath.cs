@@ -74,12 +74,16 @@ namespace Platformer.Game.Player.Base
 
         private void HpChangedCallback(int hp)
         {
-            if (hp > 0 || IsDead)
+            if (hp <= 0 && !IsDead)
             {
-                return;
+                Die();
+            }
+            else if (hp < _currentHealth)
+            {
+                _animation.TriggerHit();
             }
 
-            Die();
+            _currentHealth = hp;
         }
 
         #endregion

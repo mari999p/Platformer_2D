@@ -8,9 +8,9 @@ namespace Platformer.Game.Enemy.Base
         #region Variables
 
         [SerializeField] private TriggerObserver _moveObserver;
-        [SerializeField] private TriggerObserver _stopChasingObserver;
         [SerializeField] private EnemyIdle _idle;
         [SerializeField] private EnemyMovement _movement;
+        private TriggerObserver _stopChasingObserver;
 
         #endregion
 
@@ -50,7 +50,7 @@ namespace Platformer.Game.Enemy.Base
 
         private void TriggerEnteredCallback(Collider2D col)
         {
-            if (!col.CompareTag("Player"))
+            if (!col.CompareTag(Tag.Player))
             {
                 return;
             }
@@ -62,7 +62,7 @@ namespace Platformer.Game.Enemy.Base
 
         private void TriggerExitedCallback(Collider2D col)
         {
-            if (!col.CompareTag("Player"))
+            if (!col.CompareTag(Tag.Player))
             {
                 return;
             }
