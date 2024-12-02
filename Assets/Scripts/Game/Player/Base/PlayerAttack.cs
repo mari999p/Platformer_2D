@@ -1,17 +1,20 @@
 using UnityEngine;
 
-namespace Platformer.Player
+namespace Platformer.Game.Player.Base
 {
-    public class PlayerAttack : MonoBehaviour
+    public class PlayerAttack : PlayerBehaviour
     {
-        [SerializeField] private PlayerAnimation _playerAnimation;
+        #region Variables
 
+        [SerializeField] private PlayerAnimation _playerAnimation;
         [SerializeField] private float _attackCooldown;
-        private float _nextAttackTime;
-        [SerializeField] private PlayerBomb _playerBombPrefab; 
+        [SerializeField] private PlayerBomb _playerBombPrefab;
         [SerializeField] private Transform _spawnPointTransform;
-       
- 
+        private float _nextAttackTime;
+
+        #endregion
+
+        #region Unity lifecycle
 
         private void Update()
         {
@@ -22,13 +25,16 @@ namespace Platformer.Player
             }
         }
 
-       
+        #endregion
+
+        #region Private methods
 
         private void PerformAttack()
         {
             _playerAnimation.TriggerAttack();
-            PlayerBomb bomb = Instantiate(_playerBombPrefab, _spawnPointTransform.position, _spawnPointTransform.rotation);
-            
+            Instantiate(_playerBombPrefab, _spawnPointTransform.position, _spawnPointTransform.rotation);
         }
+
+        #endregion
     }
 }

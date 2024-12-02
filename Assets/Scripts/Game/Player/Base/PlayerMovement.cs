@@ -1,9 +1,11 @@
 using UnityEngine;
 
-namespace Platformer.Player
+namespace Platformer.Game.Player.Base
 {
-    public class PlayerMovement: MonoBehaviour
+    public class PlayerMovement : PlayerBehaviour
     {
+        #region Variables
+
         [Header("Components")]
         [SerializeField] private PlayerAnimation _animation;
 
@@ -15,8 +17,13 @@ namespace Platformer.Player
         [Header("Ground Check")]
         [SerializeField] private LayerMask _groundLayer;
         [SerializeField] private Transform _groundCheck;
+        [SerializeField] private float _groundCheckRadius = 0.1f;
         private bool _isGrounded;
-        [SerializeField] private float _groundCheckRadius = 0.1f; 
+
+        #endregion
+
+        #region Unity lifecycle
+
         private void Update()
         {
             Move();
@@ -29,7 +36,9 @@ namespace Platformer.Player
             CheckGround();
         }
 
-      
+        #endregion
+
+        #region Private methods
 
         private void CheckGround()
         {
@@ -50,14 +59,12 @@ namespace Platformer.Player
             float horizontal = Input.GetAxis("Horizontal");
             Vector2 direction = new(horizontal, 0);
             float currentSpeed = _speed;
-            
 
             Vector2 velocity = direction.normalized * currentSpeed;
             velocity.y = _rb.velocity.y;
             _rb.velocity = velocity;
 
             _animation.SetMovement(direction.magnitude);
-           
         }
 
         private void Rotate()
@@ -66,9 +73,12 @@ namespace Platformer.Player
             {
                 _spriteRenderer.flipX = Input.GetAxis("Horizontal") < 0;
             }
+
             Vector3 rotation = transform.eulerAngles;
             rotation.z = 0;
             transform.eulerAngles = rotation;
         }
+
+        #endregion
     }
 }
