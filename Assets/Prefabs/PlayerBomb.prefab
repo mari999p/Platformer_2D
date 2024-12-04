@@ -175,7 +175,7 @@ MonoBehaviour:
   _blastRadius: 1.5
   _playerLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 264
 --- !u!50 &7874132314497934216
 Rigidbody2D:
   serializedVersion: 4
