@@ -7,7 +7,7 @@ namespace Platformer.Game.Player.Base
         #region Variables
 
         private static readonly int Attack = Animator.StringToHash("attack");
-        private static readonly int Death = Animator.StringToHash("death");
+        private static readonly int Dead = Animator.StringToHash("death");
         private static readonly int Jump = Animator.StringToHash("jump");
         private static readonly int Movement = Animator.StringToHash("movement");
         private static readonly int Hit = Animator.StringToHash("hit"); 
@@ -29,7 +29,7 @@ namespace Platformer.Game.Player.Base
 
         public void TriggerDeath()
         {
-            _animator.SetTrigger(Death);
+            _animator.SetTrigger(Dead);
         }
 
         public void TriggerJump()

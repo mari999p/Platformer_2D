@@ -11,7 +11,6 @@ namespace Platformer.Game.Player.Base
         [SerializeField] private UnitHp _hp;
         [SerializeField] private Collider2D _collider;
         [SerializeField] private Rigidbody2D _rb;
-        [SerializeField] private int _currentHealth;
         [SerializeField] private PlayerMovement _movement;
         [SerializeField] private PlayerAttack _attack;
         [SerializeField] private PlayerAnimation _animation;
@@ -74,16 +73,13 @@ namespace Platformer.Game.Player.Base
 
         private void HpChangedCallback(int hp)
         {
-            if (hp <= 0 && !IsDead)
-            {
-                Die();
-            }
-            else if (hp < _currentHealth)
+            if (hp > 0 || IsDead)
             {
                 _animation.TriggerHit();
+                return;
             }
 
-            _currentHealth = hp;
+            Die();
         }
 
         #endregion

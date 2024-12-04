@@ -4,13 +4,20 @@ using UnityEngine;
 
 namespace Platformer.Game.Enemy
 {
-    public class MeleeEnemyAttack: EnemyAttack
+    public class MeleeEnemyAttack : EnemyAttack
     {
+        #region Variables
+
         [Header(nameof(MeleeEnemyAttack))]
         [SerializeField] private Transform _hitMarkerTransform;
         [SerializeField] private float _hitRadius = 1f;
         [SerializeField] private LayerMask _hitMask;
         [SerializeField] private int _damage = 1;
+
+        #endregion
+
+        #region Unity lifecycle
+
         private void OnEnable()
         {
             Animation.OnAttackHit += AttackHitCallback;
@@ -31,6 +38,11 @@ namespace Platformer.Game.Enemy
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(_hitMarkerTransform.position, _hitRadius);
         }
+
+        #endregion
+
+        #region Private methods
+
         private void Attack()
         {
             Collider2D[] colliders = Physics2D.OverlapCircleAll(_hitMarkerTransform.position, _hitRadius, _hitMask);
@@ -47,5 +59,7 @@ namespace Platformer.Game.Enemy
         {
             Attack();
         }
+
+        #endregion
     }
 }

@@ -8,7 +8,7 @@ namespace Platformer.Game.Player.Base
 
         [SerializeField] private PlayerAnimation _playerAnimation;
         [SerializeField] private float _attackCooldown;
-        [SerializeField] private PlayerBomb _playerBombPrefab;
+        [SerializeField] private Bomb _playerBombPrefab;
         [SerializeField] private Transform _spawnPointTransform;
         private float _nextAttackTime;
 

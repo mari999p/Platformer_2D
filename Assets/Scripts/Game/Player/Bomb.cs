@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Platformer.Game.Player
 {
-    public class PlayerBomb : MonoBehaviour
+    public class Bomb : MonoBehaviour
     {
         #region Variables
 
@@ -16,11 +16,14 @@ namespace Platformer.Game.Player
         [SerializeField] private BombAnimation _bombAnimation;
         [SerializeField] private float _blastRadius = 5f;
         [SerializeField] private LayerMask _playerLayer;
-
+        private Vector3 _direction;
         #endregion
 
         #region Unity lifecycle
-
+        private void Update()
+        {
+            transform.position += _direction * (_speed * Time.deltaTime);
+        }
         private void Start()
         {
             _rb.velocity = transform.right * _speed;
@@ -54,9 +57,9 @@ namespace Platformer.Game.Player
             _bombAnimation.TriggerExplosion();
 
             Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _blastRadius, _playerLayer);
-            foreach (Collider2D collider in colliders)
+            foreach (Collider2D collider1 in colliders)
             {
-                if (collider.TryGetComponent(out IDamageable hp))
+                if (collider1.TryGetComponent(out IDamageable hp))
                 {
                     hp.ApplyDamage(_damage);
                 }
@@ -66,5 +69,15 @@ namespace Platformer.Game.Player
         }
 
         #endregion
+
+        public void SetDirection(Vector3 direction)
+        {
+            _direction = direction;
+        }
+
+        public void SetSpeed(float bombSpeed)
+        { 
+            _speed = bombSpeed; 
+        }
     }
 }

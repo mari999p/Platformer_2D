@@ -9,7 +9,6 @@ namespace Platformer.Game.Enemy
 
         [SerializeField] private Rigidbody2D _rb;
         [SerializeField] private float _speed = 3f;
-        [SerializeField] private SpriteRenderer _spriteRenderer;
         private Transform _target;
 
         #endregion
@@ -66,10 +65,11 @@ namespace Platformer.Game.Enemy
 
         private void Rotate()
         {
-            _spriteRenderer.flipX = _target.position.x > transform.position.x;
-            Vector3 rotation = transform.eulerAngles;
-            rotation.z = 0;
-            transform.eulerAngles = rotation;
+            Vector3 localScale = transform.localScale;
+            localScale.x = _target.position.x > transform.position.x
+                ? -Mathf.Abs(localScale.x)
+                : Mathf.Abs(localScale.x);
+            transform.localScale = localScale;
         }
 
         #endregion

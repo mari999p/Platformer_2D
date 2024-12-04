@@ -8,17 +8,13 @@ namespace Platformer.Game.Enemy.Base
         private static readonly int Attack = Animator.StringToHash("attack");
         private static readonly int Dead = Animator.StringToHash("death");
         private static readonly int Speed = Animator.StringToHash("speed");
+        private static readonly int Hit = Animator.StringToHash("hit"); 
         public event Action OnAttackHit;
         [SerializeField] private Animator _animator;
         
-        public void PlayAttack()
+        public void EnemyAttack()
         {
             _animator.SetTrigger(Attack);
-        }
-
-        public void PlayDeath()
-        {
-            _animator.SetTrigger(Dead);
         }
 
         public void SetSpeed(float value)
@@ -28,6 +24,15 @@ namespace Platformer.Game.Enemy.Base
         private void AttackHit()
         {
             OnAttackHit?.Invoke();
+        }
+        public void TriggerHit()
+        {
+            _animator.SetTrigger(Hit);
+        }
+
+        public void TriggerDeath()
+        {
+            _animator.SetTrigger(Dead);
         }
     }
 }

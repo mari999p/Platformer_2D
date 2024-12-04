@@ -10,7 +10,7 @@ namespace Platformer.Game.Enemy.Base
         [SerializeField] private float _attackDelay = 1f;
         [SerializeField] private EnemyAnimation _animation;
 
-        private bool _needAttack;
+        public bool _needAttack;
         private float _nextAttackTime;
 
         #endregion
@@ -58,9 +58,9 @@ namespace Platformer.Game.Enemy.Base
 
         #region Protected methods
 
-        private void OnPerformAttack()
+        protected void OnPerformAttack()
         {
-            _animation.PlayAttack();
+            _animation.EnemyAttack();
         }
 
         #endregion
