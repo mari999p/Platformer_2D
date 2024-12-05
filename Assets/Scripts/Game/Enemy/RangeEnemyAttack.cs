@@ -51,6 +51,8 @@ namespace Platformer.Game.Enemy
             }
 
             float directionToTarget = Target.position.x - transform.position.x;
+            float targetRotationZ = directionToTarget > 0 ? 0f : 130f;
+            _spawnPointTransform.rotation = Quaternion.Euler(0f, 0f, targetRotationZ);
             transform.localScale = new Vector3(Mathf.Sign(directionToTarget) * -Mathf.Abs(transform.localScale.x),
                 transform.localScale.y, transform.localScale.z);
         }

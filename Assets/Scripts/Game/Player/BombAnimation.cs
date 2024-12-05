@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Platformer.Game.Player
@@ -8,7 +9,6 @@ namespace Platformer.Game.Player
 
         private static readonly int Explosion = Animator.StringToHash("explosion");
         [SerializeField] private Animator _animator;
-
         #endregion
 
         #region Public methods

@@ -9,6 +9,7 @@ namespace Platformer.Game.Enemy.Base
         private static readonly int Dead = Animator.StringToHash("death");
         private static readonly int Speed = Animator.StringToHash("speed");
         private static readonly int Hit = Animator.StringToHash("hit"); 
+        private static readonly int Defuse = Animator.StringToHash("defuse");
         public event Action OnAttackHit;
         [SerializeField] private Animator _animator;
         
@@ -33,6 +34,10 @@ namespace Platformer.Game.Enemy.Base
         public void TriggerDeath()
         {
             _animator.SetTrigger(Dead);
+        }
+        public void TriggerDefuse()
+        {
+            _animator.SetTrigger(Defuse);
         }
     }
 }

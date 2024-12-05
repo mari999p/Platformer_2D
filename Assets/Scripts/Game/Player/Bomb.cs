@@ -17,19 +17,24 @@ namespace Platformer.Game.Player
         [SerializeField] private float _blastRadius = 5f;
         [SerializeField] private LayerMask _playerLayer;
         private Vector3 _direction;
+
         #endregion
 
         #region Unity lifecycle
+
         private void Update()
         {
             transform.position += _direction * (_speed * Time.deltaTime);
-        }
-        private void Start()
-        {
-            _rb.velocity = transform.right * _speed;
 
+            _rb.velocity = transform.right * _speed;
             StartCoroutine(DestroyWithLifetimeDelay());
         }
+        // private void Start()
+        // {
+        //     _rb.velocity = transform.right * _speed;
+        //
+        //     StartCoroutine(DestroyWithLifetimeDelay());
+        // }
 
         private void OnDrawGizmosSelected()
         {
@@ -40,6 +45,20 @@ namespace Platformer.Game.Player
         private void OnTriggerEnter2D(Collider2D other)
         {
             Explode();
+        }
+
+        #endregion
+
+        #region Public methods
+
+        public void SetDirection(Vector3 direction)
+        {
+            _direction = direction;
+        }
+
+        public void SetSpeed(float bombSpeed)
+        {
+            _speed = bombSpeed;
         }
 
         #endregion
@@ -55,7 +74,6 @@ namespace Platformer.Game.Player
         private void Explode()
         {
             _bombAnimation.TriggerExplosion();
-
             Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _blastRadius, _playerLayer);
             foreach (Collider2D collider1 in colliders)
             {
@@ -69,15 +87,5 @@ namespace Platformer.Game.Player
         }
 
         #endregion
-
-        public void SetDirection(Vector3 direction)
-        {
-            _direction = direction;
-        }
-
-        public void SetSpeed(float bombSpeed)
-        { 
-            _speed = bombSpeed; 
-        }
     }
 }
