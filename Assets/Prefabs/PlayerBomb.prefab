@@ -169,8 +169,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rb: {fileID: 7874132314497934216}
   _speed: 0
-  _lifetime: 1
-  _damage: 2
+  _lifetime: 2
+  _damage: 1
   _bombAnimation: {fileID: 87483070043714854}
   _blastRadius: 1.5
   _playerLayer:
