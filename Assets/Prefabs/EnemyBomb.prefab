@@ -173,9 +173,10 @@ MonoBehaviour:
   _damage: 1
   _bombAnimation: {fileID: 87483070043714854}
   _blastRadius: 2
-  _playerLayer:
+  _layer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 0
+  _explosionForce: 49.99
 --- !u!50 &7874132314497934216
 Rigidbody2D:
   serializedVersion: 4

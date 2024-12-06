@@ -172,10 +172,11 @@ MonoBehaviour:
   _lifetime: 2
   _damage: 1
   _bombAnimation: {fileID: 87483070043714854}
-  _blastRadius: 1.5
-  _playerLayer:
+  _blastRadius: 2.07
+  _layer:
     serializedVersion: 2
     m_Bits: 264
+  _explosionForce: 5
 --- !u!50 &7874132314497934216
 Rigidbody2D:
   serializedVersion: 4
