@@ -1,7 +1,9 @@
+using Platformer.Infrastructure.Locator;
+
 namespace Platformer.Service.Input
 {
-    public class InputService
+    public interface IInputService: IService
     {
-        
+
     }
 }

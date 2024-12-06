@@ -1,3 +1,4 @@
+using Platformer.Service.Input;
 using UnityEngine;
 
 namespace Platformer.Game.Player.Base
@@ -19,6 +20,7 @@ namespace Platformer.Game.Player.Base
         [SerializeField] private Transform _groundCheck;
         [SerializeField] private float _groundCheckRadius = 0.1f;
         private bool _isGrounded;
+        private IInputService _inputService;
 
         #endregion
 

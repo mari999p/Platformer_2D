@@ -9,6 +9,9 @@ namespace Platformer.Game.Enemy
 
         [SerializeField] private Rigidbody2D _rb;
         [SerializeField] private float _speed = 3f;
+        [SerializeField] private Collider2D _groundCheckCollider;
+        [SerializeField] private LayerMask _groundLayer;
+        private bool _isOnGround;
         private Transform _target;
 
         #endregion
@@ -21,9 +24,13 @@ namespace Platformer.Game.Enemy
             {
                 return;
             }
-
+            CheckGroundStatus(); 
             Rotate();
             Move();
+            if (!_isOnGround)
+            {
+                StandUp();
+            }
         }
 
         private void OnDisable()
@@ -71,7 +78,15 @@ namespace Platformer.Game.Enemy
                 : Mathf.Abs(localScale.x);
             transform.localScale = localScale;
         }
+        private void CheckGroundStatus()
+        {
+            _isOnGround = _groundCheckCollider.IsTouchingLayers(_groundLayer);
+        }
 
+        private void StandUp()
+        {
+            _rb.rotation = 0f;
+        }
         #endregion
     }
 }

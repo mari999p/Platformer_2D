@@ -1,7 +1,4 @@
 namespace Platformer.Infrastructure.Locator
 {
-    public class IService
-    {
-        
-    }
+    public interface IService { }
 }

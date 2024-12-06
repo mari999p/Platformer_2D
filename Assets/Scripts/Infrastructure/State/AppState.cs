@@ -1,7 +1,11 @@
 namespace Platformer.Infrastructure.State
 {
-    public class AppState
-    {
-        
-    }
-}
+     public abstract class AppState : State
+      {
+          #region Public methods
+  
+          public abstract void Enter();
+  
+          #endregion
+      }
+  }
