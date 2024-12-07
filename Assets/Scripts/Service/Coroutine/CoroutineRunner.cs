@@ -1,6 +1,6 @@
-namespace DefaultNamespace;
+using UnityEngine;
 
-public class CoroutineRunner
+namespace Platformer.Service.Coroutine
 {
-    
+    public class CoroutineRunner : MonoBehaviour { }
 }

@@ -1,5 +1,3 @@
-using Unity.VisualScripting;
-
 namespace Platformer.Infrastructure.State
 {
     public abstract class State
