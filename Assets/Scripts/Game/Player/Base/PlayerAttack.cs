@@ -1,4 +1,6 @@
+using Platformer.Service.Input;
 using UnityEngine;
+using Zenject;
 
 namespace Platformer.Game.Player.Base
 {
@@ -11,18 +13,23 @@ namespace Platformer.Game.Player.Base
         [SerializeField] private Bomb _playerBombPrefab;
         [SerializeField] private Transform _spawnPointTransform;
         private float _nextAttackTime;
-
+        private IInputService _inputService;
         #endregion
 
         #region Unity lifecycle
-
-        private void Update()
+        [Inject]
+        public void Construct(IInputService inputService)
         {
-            if (Input.GetButtonDown("Fire1") && Time.time >= _nextAttackTime)
-            {
-                PerformAttack();
-                _nextAttackTime = Time.time + _attackCooldown;
-            }
+            _inputService = inputService;
+        }
+        private void Start()
+        {
+            _inputService.OnAttacked += PerformAttack;
+        }
+
+        private void OnDestroy()
+        {
+            _inputService.OnAttacked -= PerformAttack;
         }
 
         #endregion

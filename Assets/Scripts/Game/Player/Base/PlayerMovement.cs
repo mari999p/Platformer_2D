@@ -1,5 +1,6 @@
 using Platformer.Service.Input;
 using UnityEngine;
+using Zenject;
 
 namespace Platformer.Game.Player.Base
 {
@@ -25,12 +26,20 @@ namespace Platformer.Game.Player.Base
         #endregion
 
         #region Unity lifecycle
-
+        [Inject]
+        public void Construct(IInputService inputService)
+        {
+            _inputService = inputService;
+        }
+        private void Start()
+        {
+            _inputService.OnJump += Jump;
+        }
         private void Update()
         {
             Move();
             Rotate();
-            Jump();
+            // Jump();
         }
 
         private void FixedUpdate()
@@ -47,40 +56,37 @@ namespace Platformer.Game.Player.Base
             _isGrounded = Physics2D.OverlapCircle(_groundCheck.position, _groundCheckRadius, _groundLayer);
         }
 
+       
+
+        private void Move()
+        {
+            Vector2 velocity = _inputService.MoveDirection.normalized * _speed;
+            velocity.y = _rb.velocity.y; 
+            _rb.velocity = velocity;
+
+            _animation.SetMovement(velocity.magnitude);
+        }
+
+        private void Rotate()
+        {
+            if (_inputService.MoveDirection.x != 0)
+            {
+                _spriteRenderer.flipX = _inputService.MoveDirection.x < 0;
+                transform.eulerAngles = new Vector3(0, 0, 0);
+            }
+        }
         private void Jump()
         {
-            if (Input.GetKeyDown(KeyCode.Space) && _isGrounded)
+            if (_isGrounded)
             {
                 _rb.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
                 _animation.TriggerJump();
             }
         }
-
-        private void Move()
+        private void OnDestroy()
         {
-            float horizontal = Input.GetAxis("Horizontal");
-            Vector2 direction = new(horizontal, 0);
-            float currentSpeed = _speed;
-
-            Vector2 velocity = direction.normalized * currentSpeed;
-            velocity.y = _rb.velocity.y;
-            _rb.velocity = velocity;
-
-            _animation.SetMovement(direction.magnitude);
+            _inputService.OnJump -= Jump;
         }
-
-        private void Rotate()
-        {
-            if (Input.GetAxis("Horizontal") != 0)
-            {
-                _spriteRenderer.flipX = Input.GetAxis("Horizontal") < 0;
-            }
-
-            Vector3 rotation = transform.eulerAngles;
-            rotation.z = 0;
-            transform.eulerAngles = rotation;
-        }
-
         #endregion
     }
 }
