@@ -175,7 +175,7 @@ MonoBehaviour:
   _blastRadius: 2.07
   _layer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 264
   _explosionForce: 4
   _defuseAnimationDuration: 5
 --- !u!50 &7874132314497934216
