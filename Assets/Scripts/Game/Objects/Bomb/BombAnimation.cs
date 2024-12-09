@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Platformer.Game.Player
+namespace Platformer.Game.Objects.Bomb
 {
     public class BombAnimation : MonoBehaviour
     {

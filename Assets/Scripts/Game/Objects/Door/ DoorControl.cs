@@ -2,7 +2,7 @@ using System.Collections;
 using Platformer.Game.Player.Base;
 using UnityEngine;
 
-namespace Platformer.Game.Door
+namespace Platformer.Game.Objects.Door
 {
     public class DoorControl : MonoBehaviour
     {

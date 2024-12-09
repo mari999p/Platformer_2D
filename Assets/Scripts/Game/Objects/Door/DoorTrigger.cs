@@ -2,7 +2,7 @@ using System;
 using Platformer.Game.Common;
 using UnityEngine;
 
-namespace Platformer.Game.Door
+namespace Platformer.Game.Objects.Door
 {
     [RequireComponent(typeof(Collider2D))]
     public class DoorTrigger : MonoBehaviour

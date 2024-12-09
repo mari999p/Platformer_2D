@@ -3,7 +3,7 @@ using Platformer.Game.Common;
 using Platformer.Game.Enemy;
 using UnityEngine;
 
-namespace Platformer.Game.Player
+namespace Platformer.Game.Objects.Bomb
 {
     public class Bomb : MonoBehaviour
     {

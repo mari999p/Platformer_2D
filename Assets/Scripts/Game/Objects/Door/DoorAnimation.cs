@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Platformer.Game.Door
+namespace Platformer.Game.Objects.Door
 {
     [RequireComponent(typeof(Animator))]
     public class DoorAnimation : MonoBehaviour

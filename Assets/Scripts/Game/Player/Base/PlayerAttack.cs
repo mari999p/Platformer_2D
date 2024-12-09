@@ -1,3 +1,4 @@
+using Platformer.Game.Objects.Bomb;
 using Platformer.Service.Input;
 using UnityEngine;
 using Zenject;
