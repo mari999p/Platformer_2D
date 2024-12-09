@@ -1,7 +1,6 @@
 using System.Collections;
 using Platformer.Game.Common;
 using Platformer.Game.Enemy;
-using Platformer.Game.Utils.Log;
 using UnityEngine;
 
 namespace Platformer.Game.Player
@@ -19,6 +18,7 @@ namespace Platformer.Game.Player
         [SerializeField] private float _blastRadius = 5f;
         [SerializeField] private LayerMask _layer;
         [SerializeField] private float _explosionForce = 10f;
+        [SerializeField] private float _defuseAnimationDuration = 5f;
         private Vector3 _direction;
         private bool _isDefused;
 
@@ -42,7 +42,6 @@ namespace Platformer.Game.Player
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, _blastRadius);
-            
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -58,6 +57,19 @@ namespace Platformer.Game.Player
         #region Public methods
 
         public void Defuse()
+        {
+            if (_isDefused)
+            {
+                return;
+            }
+
+            _isDefused = true;
+            _bombAnimation.TriggerDefuse();
+            StartCoroutine(DefuseCoroutine());
+            Destroy(gameObject, _defuseAnimationDuration);
+        }
+
+        public void DefuseWithFist()
         {
             _isDefused = true;
         }
@@ -76,6 +88,12 @@ namespace Platformer.Game.Player
 
         #region Private methods
 
+        private IEnumerator DefuseCoroutine()
+        {
+            yield return new WaitForSeconds(_defuseAnimationDuration);
+            StopAllCoroutines();
+        }
+
         private IEnumerator DestroyWithLifetimeDelay()
         {
             yield return new WaitForSeconds(_lifetime);
@@ -84,14 +102,8 @@ namespace Platformer.Game.Player
 
         private void Explode()
         {
-            if (_isDefused)
-            {
-                Destroy(gameObject);
-                return;
-            }
-
             _bombAnimation.TriggerExplosion();
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _blastRadius, _layer );
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _blastRadius, _layer);
             foreach (Collider2D collider1 in colliders)
             {
                 if (collider1.TryGetComponent(out IDamageable hp))
@@ -101,9 +113,9 @@ namespace Platformer.Game.Player
 
                 if (collider1.TryGetComponent(out Rigidbody2D rb))
                 {
-                    Vector3 forceDirection = (collider1.transform.position - transform.position);
+                    Vector3 forceDirection = collider1.transform.position - transform.position;
                     forceDirection.z = 0;
-                    forceDirection.Normalize(); 
+                    forceDirection.Normalize();
                     rb.AddForce(forceDirection * _explosionForce, ForceMode2D.Impulse);
                 }
             }
@@ -112,6 +124,5 @@ namespace Platformer.Game.Player
         }
 
         #endregion
-        
     }
 }

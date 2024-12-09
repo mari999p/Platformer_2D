@@ -15,6 +15,7 @@ namespace Platformer.Game.Enemy
         [SerializeField] private EnemyAnimation _defuseAnimation;
         [SerializeField] private float _defuseRadius = 2f;
         [SerializeField] private LayerMask _bombLayer;
+        [SerializeField] private EnemyMovementAgro _movement;
         private bool _bombNearby;
 
         #endregion
@@ -49,19 +50,17 @@ namespace Platformer.Game.Enemy
         }
 
         private void DefuseBomb()
-
         {
             if (!isDefusing)
-
             {
                 isDefusing = true;
+                _movement.StopMovement();
                 _defuseAnimation.TriggerDefuse();
                 StartCoroutine(DefusingCoroutine());
             }
         }
 
         private IEnumerator DefusingCoroutine()
-
         {
             yield return new WaitForSeconds(0.5f);
             Collider2D[] bombs = Physics2D.OverlapCircleAll(transform.position, _defuseRadius, _bombLayer);
@@ -74,6 +73,7 @@ namespace Platformer.Game.Enemy
             }
 
             isDefusing = false;
+            _movement.ResumeMovement();
         }
 
         #endregion

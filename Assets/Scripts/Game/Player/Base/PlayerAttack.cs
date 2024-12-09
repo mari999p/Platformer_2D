@@ -12,16 +12,23 @@ namespace Platformer.Game.Player.Base
         [SerializeField] private float _attackCooldown;
         [SerializeField] private Bomb _playerBombPrefab;
         [SerializeField] private Transform _spawnPointTransform;
-        private float _nextAttackTime;
         private IInputService _inputService;
+        private float _nextAttackTime;
+
         #endregion
 
-        #region Unity lifecycle
+        #region Setup/Teardown
+
         [Inject]
         public void Construct(IInputService inputService)
         {
             _inputService = inputService;
         }
+
+        #endregion
+
+        #region Unity lifecycle
+
         private void Start()
         {
             _inputService.OnAttacked += PerformAttack;

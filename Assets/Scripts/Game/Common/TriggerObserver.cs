@@ -13,7 +13,9 @@ namespace Platformer.Game.Common
         public event Action<Collider2D> OnStayed;
 
         #endregion
-        
+
+        #region Unity lifecycle
+
         private void OnTriggerEnter2D(Collider2D other)
         {
             OnEntered?.Invoke(other);
@@ -28,5 +30,7 @@ namespace Platformer.Game.Common
         {
             OnStayed?.Invoke(other);
         }
+
+        #endregion
     }
 }

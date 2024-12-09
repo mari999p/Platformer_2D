@@ -21,8 +21,7 @@ namespace Platformer.Service.Input
 
         #region Properties
 
-        public Vector2 MoveDirection =>
-            new(UnityEngine.Input.GetAxis("Horizontal"), UnityEngine.Input.GetAxis("Vertical"));
+        public Vector2 MoveDirection => new(UnityEngine.Input.GetAxis("Horizontal"), 0);
 
         #endregion
 

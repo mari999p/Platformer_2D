@@ -6,6 +6,8 @@ namespace Platformer.Game.Player
     {
         #region Variables
 
+        private static readonly int Defuse = Animator.StringToHash("defuse");
+
         private static readonly int Explosion = Animator.StringToHash("explosion");
         private static readonly int Ignition = Animator.StringToHash("ignite");
         [SerializeField] private Animator _animator;
@@ -13,6 +15,11 @@ namespace Platformer.Game.Player
         #endregion
 
         #region Public methods
+
+        public void TriggerDefuse()
+        {
+            _animator.SetTrigger(Defuse);
+        }
 
         public void TriggerExplosion()
         {

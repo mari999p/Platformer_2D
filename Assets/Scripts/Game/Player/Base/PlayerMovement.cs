@@ -20,31 +20,42 @@ namespace Platformer.Game.Player.Base
         [SerializeField] private LayerMask _groundLayer;
         [SerializeField] private Transform _groundCheck;
         [SerializeField] private float _groundCheckRadius = 0.1f;
-        private bool _isGrounded;
         private IInputService _inputService;
+        private bool _isGrounded;
 
         #endregion
 
-        #region Unity lifecycle
+        #region Setup/Teardown
+
         [Inject]
         public void Construct(IInputService inputService)
         {
             _inputService = inputService;
         }
+
+        #endregion
+
+        #region Unity lifecycle
+
         private void Start()
         {
             _inputService.OnJump += Jump;
         }
+
         private void Update()
         {
             Move();
             Rotate();
-            // Jump();
         }
 
         private void FixedUpdate()
         {
             CheckGround();
+        }
+
+        private void OnDestroy()
+        {
+            _inputService.OnJump -= Jump;
         }
 
         #endregion
@@ -56,25 +67,6 @@ namespace Platformer.Game.Player.Base
             _isGrounded = Physics2D.OverlapCircle(_groundCheck.position, _groundCheckRadius, _groundLayer);
         }
 
-       
-
-        private void Move()
-        {
-            Vector2 velocity = _inputService.MoveDirection.normalized * _speed;
-            velocity.y = _rb.velocity.y; 
-            _rb.velocity = velocity;
-
-            _animation.SetMovement(velocity.magnitude);
-        }
-
-        private void Rotate()
-        {
-            if (_inputService.MoveDirection.x != 0)
-            {
-                _spriteRenderer.flipX = _inputService.MoveDirection.x < 0;
-                transform.eulerAngles = new Vector3(0, 0, 0);
-            }
-        }
         private void Jump()
         {
             if (_isGrounded)
@@ -83,10 +75,25 @@ namespace Platformer.Game.Player.Base
                 _animation.TriggerJump();
             }
         }
-        private void OnDestroy()
+
+        private void Move()
         {
-            _inputService.OnJump -= Jump;
+            Vector2 velocity = _inputService.MoveDirection.normalized * _speed;
+            velocity.y = _rb.velocity.y;
+            _rb.velocity = velocity;
+
+            _animation.SetMovement(velocity.magnitude);
         }
+
+        private void Rotate()
+        {
+            transform.eulerAngles = new Vector3(0, 0, 0);
+            if (_inputService.MoveDirection.x != 0)
+            {
+                _spriteRenderer.flipX = _inputService.MoveDirection.x < 0;
+            }
+        }
+
         #endregion
     }
 }

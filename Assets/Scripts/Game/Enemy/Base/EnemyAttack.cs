@@ -6,11 +6,11 @@ namespace Platformer.Game.Enemy.Base
     {
         #region Variables
 
+        public bool _needAttack;
+
         [Header(nameof(EnemyAttack))]
         [SerializeField] private float _attackDelay = 1f;
         [SerializeField] private EnemyAnimation _animation;
-
-        public bool _needAttack;
         private float _nextAttackTime;
 
         #endregion
@@ -41,7 +41,6 @@ namespace Platformer.Game.Enemy.Base
         #endregion
 
         #region Public methods
-        
 
         public void StartAttack(Transform target)
         {

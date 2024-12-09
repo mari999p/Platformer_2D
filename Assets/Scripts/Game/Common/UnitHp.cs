@@ -16,6 +16,11 @@ namespace Platformer.Game.Common
         #region Events
 
         public event Action<int> OnChanged;
+
+        #endregion
+
+        #region Properties
+
         public int Current => _current;
         public int Max => _max;
 

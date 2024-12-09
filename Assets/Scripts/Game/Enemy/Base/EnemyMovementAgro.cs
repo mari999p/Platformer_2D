@@ -46,6 +46,20 @@ namespace Platformer.Game.Enemy.Base
 
         #endregion
 
+        #region Public methods
+
+        public void ResumeMovement()
+        {
+            _movement.Activate();
+        }
+
+        public void StopMovement()
+        {
+            _movement.Deactivate();
+        }
+
+        #endregion
+
         #region Private methods
 
         private void TriggerEnteredCallback(Collider2D col)
