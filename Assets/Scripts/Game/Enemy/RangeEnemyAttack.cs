@@ -1,4 +1,5 @@
 using Platformer.Game.Enemy.Base;
+using Platformer.Game.Objects.Bomb;
 using Platformer.Game.Player;
 using UnityEngine;
 
