@@ -42,12 +42,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Sprites
+    uniqueID: 2340324173
+    locked: 0
   - name: Model
     uniqueID: 2945403375
     locked: 0
   - name: Bomb
     uniqueID: 1148676991
-    locked: 0
-  - name: Sprites
-    uniqueID: 2340324173
     locked: 0
