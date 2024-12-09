@@ -18,7 +18,7 @@ namespace Platformer.Infrastructure.State
 
         public LoadGameState(SceneLoaderService sceneLoaderService, CoroutineRunner coroutineRunner)
         {
-            this.Error("NON Empty");
+           
             _sceneLoaderService = sceneLoaderService;
             _coroutineRunner = coroutineRunner;
         }
@@ -29,7 +29,6 @@ namespace Platformer.Infrastructure.State
 
         public override void Enter(string sceneName)
         {
-            this.Error($"_sceneLoaderService '{_sceneLoaderService}'");
             _sceneLoaderService.Load(sceneName);
 
             _coroutineRunner.StartCoroutine(EnterGameWithDelay());
