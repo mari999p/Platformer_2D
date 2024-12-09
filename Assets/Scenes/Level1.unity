@@ -869,6 +869,7 @@ Transform:
   m_Children:
   - {fileID: 1903030356}
   - {fileID: 726383850}
+  - {fileID: 999788810}
   - {fileID: 1464495761}
   - {fileID: 1007912549}
   - {fileID: 942252402}
@@ -901,7 +902,7 @@ Transform:
   m_GameObject: {fileID: 267759089}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.67, y: -0.18, z: 0}
+  m_LocalPosition: {x: -0.04, y: -0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -921,10 +922,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDefusing: 0
   _defuseAnimation: {fileID: 939503968}
-  _defuseRadius: 0.58
+  _defuseRadius: 1.07
   _bombLayer:
     serializedVersion: 2
     m_Bits: 128
+  _movement: {fileID: 744547962}
 --- !u!1 &296026026
 GameObject:
   m_ObjectHideFlags: 0
@@ -1776,7 +1778,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 573605941}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Market - Ground Check
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1792,7 +1794,7 @@ Transform:
   m_GameObject: {fileID: 573605940}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.05, y: -0.45, z: 0}
+  m_LocalPosition: {x: 0, y: -0.61, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2710,6 +2712,58 @@ MonoBehaviour:
   _bombLayer:
     serializedVersion: 2
     m_Bits: 128
+  _movement: {fileID: 0}
+--- !u!1 &999788809
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 999788810}
+  - component: {fileID: 999788811}
+  m_Layer: 8
+  m_Name: EnemyDefuseBomb
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &999788810
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999788809}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.53, y: -0.45, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 255904789}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &999788811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999788809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0ec4298afdc43418897ff424507ad6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDefusing: 0
+  _defuseAnimation: {fileID: 1903030353}
+  _defuseRadius: 0.67
+  _bombLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  _throwForce: 5
 --- !u!1 &1007912547
 GameObject:
   m_ObjectHideFlags: 0
@@ -68375,7 +68429,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1231169268
 Transform:
   m_ObjectHideFlags: 0
@@ -74771,7 +74825,7 @@ Transform:
   m_GameObject: {fileID: 2127881314}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.15, y: -0.032, z: 0}
+  m_LocalPosition: {x: -0.39, y: -0.06, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
