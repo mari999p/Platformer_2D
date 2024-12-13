@@ -11,7 +11,9 @@ namespace Platformer.Game.Enemy.Base
         private static readonly int Dead = Animator.StringToHash("death");
         private static readonly int Defuse = Animator.StringToHash("defuse");
         private static readonly int Hit = Animator.StringToHash("hit");
+        private static readonly int ScareRun = Animator.StringToHash("scareRun");
         private static readonly int Speed = Animator.StringToHash("speed");
+        private static readonly int SwalowBomb = Animator.StringToHash("swalowBomb");
         [SerializeField] private Animator _animator;
 
         #endregion
@@ -47,6 +49,16 @@ namespace Platformer.Game.Enemy.Base
         public void TriggerHit()
         {
             _animator.SetTrigger(Hit);
+        }
+
+        public void TriggerScareRun() //TODO ???
+        {
+            _animator.SetTrigger(ScareRun);
+        }
+
+        public void TriggerSwalowBomb()
+        {
+            _animator.SetTrigger(SwalowBomb);
         }
 
         #endregion

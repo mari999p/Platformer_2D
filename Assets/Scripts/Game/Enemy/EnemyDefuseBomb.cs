@@ -1,22 +1,22 @@
 using System.Collections;
 using Platformer.Game.Enemy.Base;
 using Platformer.Game.Objects.Bomb;
-using Platformer.Game.Player;
 using UnityEngine;
 
 namespace Platformer.Game.Enemy
 
 {
     public class EnemyDefuseBomb : EnemyBehaviour
-
     {
         #region Variables
 
+        [Header(nameof(EnemyDefuseBomb))]
         public bool isDefusing;
         [SerializeField] private EnemyAnimation _defuseAnimation;
-        [SerializeField] private float _defuseRadius = 2f;
         [SerializeField] private LayerMask _bombLayer;
-        [SerializeField] private EnemyMovementAgro _movement;
+        [SerializeField] private float _defuseRadius = 2f;
+        [SerializeField] private float _timeOfDeactivation = 1;
+
         private bool _bombNearby;
 
         #endregion
@@ -55,7 +55,6 @@ namespace Platformer.Game.Enemy
             if (!isDefusing)
             {
                 isDefusing = true;
-                _movement.StopMovement();
                 _defuseAnimation.TriggerDefuse();
                 StartCoroutine(DefusingCoroutine());
             }
@@ -63,7 +62,7 @@ namespace Platformer.Game.Enemy
 
         private IEnumerator DefusingCoroutine()
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(_timeOfDeactivation);
             Collider2D[] bombs = Physics2D.OverlapCircleAll(transform.position, _defuseRadius, _bombLayer);
             foreach (Collider2D bombCollider in bombs)
             {
@@ -74,7 +73,6 @@ namespace Platformer.Game.Enemy
             }
 
             isDefusing = false;
-            _movement.ResumeMovement();
         }
 
         #endregion

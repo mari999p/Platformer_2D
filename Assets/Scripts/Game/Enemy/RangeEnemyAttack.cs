@@ -1,6 +1,5 @@
 using Platformer.Game.Enemy.Base;
 using Platformer.Game.Objects.Bomb;
-using Platformer.Game.Player;
 using UnityEngine;
 
 namespace Platformer.Game.Enemy
@@ -23,7 +22,7 @@ namespace Platformer.Game.Enemy
         protected override void Update()
         {
             base.Update();
-            if (_needAttack && Time.time >= _rangeNextAttackTime)
+            if (needAttack && Time.time >= _rangeNextAttackTime)
             {
                 PerformAttack();
                 _rangeNextAttackTime = Time.time + _attackCooldown;

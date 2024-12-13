@@ -10,8 +10,8 @@ namespace Platformer.Game.Enemy
 
         [Header(nameof(MeleeEnemyAttack))]
         [SerializeField] private Transform _hitMarkerTransform;
-        [SerializeField] private float _hitRadius = 1f;
         [SerializeField] private LayerMask _hitMask;
+        [SerializeField] private float _hitRadius = 1f;
         [SerializeField] private int _damage = 1;
 
         #endregion

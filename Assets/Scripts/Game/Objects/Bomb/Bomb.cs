@@ -10,13 +10,12 @@ namespace Platformer.Game.Objects.Bomb
         #region Variables
 
         [SerializeField] private Rigidbody2D _rb;
-
+        [SerializeField] private BombAnimation _bombAnimation;
+        [SerializeField] private LayerMask _layer;
         [SerializeField] private float _speed = 10f;
         [SerializeField] private float _lifetime = 3f;
         [SerializeField] private int _damage = 2;
-        [SerializeField] private BombAnimation _bombAnimation;
         [SerializeField] private float _blastRadius = 5f;
-        [SerializeField] private LayerMask _layer;
         [SerializeField] private float _explosionForce = 10f;
         [SerializeField] private float _defuseAnimationDuration = 5f;
         private Vector3 _direction;
@@ -28,8 +27,7 @@ namespace Platformer.Game.Objects.Bomb
 
         private void Start()
         {
-            _bombAnimation.TriggerIgnite();
-            _rb.velocity = _direction * _speed;
+            InitializeBomb();
             StartCoroutine(DestroyWithLifetimeDelay());
         }
 
@@ -46,6 +44,11 @@ namespace Platformer.Game.Objects.Bomb
 
         private void OnTriggerEnter2D(Collider2D other)
         {
+            if (_isDefused)
+            {
+                return;
+            }
+
             if (other.TryGetComponent(out EnemyDefuseBomb enemy) && !enemy.isDefusing)
             {
                 Explode();
@@ -97,7 +100,10 @@ namespace Platformer.Game.Objects.Bomb
         private IEnumerator DestroyWithLifetimeDelay()
         {
             yield return new WaitForSeconds(_lifetime);
-            Explode();
+            if (!_isDefused)
+            {
+                Explode();
+            }
         }
 
         private void Explode()
@@ -121,6 +127,13 @@ namespace Platformer.Game.Objects.Bomb
             }
 
             Destroy(gameObject);
+        }
+
+        private void InitializeBomb()
+        {
+            _rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+            _bombAnimation.TriggerIgnite();
+            _rb.velocity = _direction * _speed;
         }
 
         #endregion

@@ -8,9 +8,9 @@ namespace Platformer.Game.Enemy
         #region Variables
 
         [SerializeField] private Rigidbody2D _rb;
-        [SerializeField] private float _speed = 3f;
         [SerializeField] private Collider2D _groundCheckCollider;
         [SerializeField] private LayerMask _groundLayer;
+        [SerializeField] private float _speed = 3f;
         private bool _isOnGround;
         private Transform _target;
 
@@ -18,13 +18,14 @@ namespace Platformer.Game.Enemy
 
         #region Unity lifecycle
 
-        private void Update()
+        public void Update()
         {
             if (_target == null)
             {
                 return;
             }
-            CheckGroundStatus(); 
+
+            CheckGroundStatus();
             Rotate();
             Move();
             if (!_isOnGround)
@@ -56,6 +57,11 @@ namespace Platformer.Game.Enemy
 
         #region Private methods
 
+        private void CheckGroundStatus()
+        {
+            _isOnGround = _groundCheckCollider.IsTouchingLayers(_groundLayer);
+        }
+
         private void Move()
         {
             Vector2 direction = (_target.position - transform.position).normalized;
@@ -78,15 +84,12 @@ namespace Platformer.Game.Enemy
                 : Mathf.Abs(localScale.x);
             transform.localScale = localScale;
         }
-        private void CheckGroundStatus()
-        {
-            _isOnGround = _groundCheckCollider.IsTouchingLayers(_groundLayer);
-        }
 
         private void StandUp()
         {
             _rb.rotation = 0f;
         }
+
         #endregion
     }
 }

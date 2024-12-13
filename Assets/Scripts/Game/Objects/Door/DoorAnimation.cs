@@ -8,7 +8,6 @@ namespace Platformer.Game.Objects.Door
         #region Variables
 
         private static readonly int Close = Animator.StringToHash("close");
-
         private static readonly int Open = Animator.StringToHash("open");
         [SerializeField] private Animator _animator;
 
@@ -18,7 +17,7 @@ namespace Platformer.Game.Objects.Door
 
         private void Awake()
         {
-            _animator = GetComponent<Animator>();
+            _animator = GetComponent<Animator>(); //Todo
         }
 
         #endregion

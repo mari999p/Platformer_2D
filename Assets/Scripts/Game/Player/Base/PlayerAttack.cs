@@ -10,9 +10,9 @@ namespace Platformer.Game.Player.Base
         #region Variables
 
         [SerializeField] private PlayerAnimation _playerAnimation;
-        [SerializeField] private float _attackCooldown;
         [SerializeField] private Bomb _playerBombPrefab;
         [SerializeField] private Transform _spawnPointTransform;
+        [SerializeField] private float _attackCooldown;
         private IInputService _inputService;
         private float _nextAttackTime;
 

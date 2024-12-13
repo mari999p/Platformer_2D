@@ -1,7 +1,6 @@
 using System.Collections;
 using Platformer.Game.Enemy.Base;
 using Platformer.Game.Objects.Bomb;
-using Platformer.Game.Player;
 using UnityEngine;
 
 namespace Platformer.Game.Enemy
@@ -9,11 +8,11 @@ namespace Platformer.Game.Enemy
     public class EnemyThrowBomb : EnemyBehaviour
     {
         #region Variables
-
+        [Header(nameof(EnemyThrowBomb))]
         public bool isDefusing;
         [SerializeField] private EnemyAnimation _defuseAnimation;
-        [SerializeField] private float _defuseRadius = 2f;
         [SerializeField] private LayerMask _bombLayer;
+        [SerializeField] private float _defuseRadius = 2f;
         [SerializeField] private float _throwForce = 5f;
         private bool _bombNearby;
 

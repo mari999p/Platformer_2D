@@ -8,11 +8,11 @@ namespace Platformer.Game.Player.Base
 
         private static readonly int Attack = Animator.StringToHash("attack");
         private static readonly int Dead = Animator.StringToHash("death");
+        private static readonly int EnterDoor = Animator.StringToHash("enterDoor");
+        private static readonly int ExitDoor = Animator.StringToHash("exitDoor");
         private static readonly int Hit = Animator.StringToHash("hit");
         private static readonly int Jump = Animator.StringToHash("jump");
         private static readonly int Movement = Animator.StringToHash("movement");
-        private static readonly int EnterDoor = Animator.StringToHash("enterDoor");
-        private static readonly int ExitDoor = Animator.StringToHash("exitDoor");
         [SerializeField] private Animator _animator;
 
         #endregion
@@ -34,6 +34,16 @@ namespace Platformer.Game.Player.Base
             _animator.SetTrigger(Dead);
         }
 
+        public void TriggerEnterDoor()
+        {
+            _animator.SetTrigger(EnterDoor);
+        }
+
+        public void TriggerExitDoor()
+        {
+            _animator.SetTrigger(ExitDoor);
+        }
+
         public void TriggerHit()
         {
             _animator.SetTrigger(Hit);
@@ -42,14 +52,6 @@ namespace Platformer.Game.Player.Base
         public void TriggerJump()
         {
             _animator.SetTrigger(Jump);
-        }
-        public void TriggerEnterDoor()
-        {
-            _animator.SetTrigger(EnterDoor);
-        }
-        public void TriggerExitDoor()
-        {
-            _animator.SetTrigger(ExitDoor);
         }
 
         #endregion

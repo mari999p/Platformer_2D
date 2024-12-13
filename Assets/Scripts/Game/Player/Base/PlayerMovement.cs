@@ -10,6 +10,7 @@ namespace Platformer.Game.Player.Base
 
         [Header("Components")]
         [SerializeField] private PlayerAnimation _animation;
+        [SerializeField] private GameEffectsAnimation _gameEffectsAnimation;
 
         [Header("Settings")]
         [SerializeField] private Rigidbody2D _rb;
@@ -22,6 +23,7 @@ namespace Platformer.Game.Player.Base
         [SerializeField] private float _groundCheckRadius = 0.1f;
         private IInputService _inputService;
         private bool _isGrounded;
+        private bool _wasGrounded;
 
         #endregion
 
@@ -64,7 +66,12 @@ namespace Platformer.Game.Player.Base
 
         private void CheckGround()
         {
+            _wasGrounded = _isGrounded;
             _isGrounded = Physics2D.OverlapCircle(_groundCheck.position, _groundCheckRadius, _groundLayer);
+            if (!_wasGrounded && _isGrounded)
+            {
+                _gameEffectsAnimation.TriggerJumpParticles();
+            }
         }
 
         private void Jump()
@@ -81,7 +88,6 @@ namespace Platformer.Game.Player.Base
             Vector2 velocity = _inputService.MoveDirection.normalized * _speed;
             velocity.y = _rb.velocity.y;
             _rb.velocity = velocity;
-
             _animation.SetMovement(velocity.magnitude);
         }
 

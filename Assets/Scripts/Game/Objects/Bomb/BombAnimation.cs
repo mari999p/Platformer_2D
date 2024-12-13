@@ -7,7 +7,6 @@ namespace Platformer.Game.Objects.Bomb
         #region Variables
 
         private static readonly int Defuse = Animator.StringToHash("defuse");
-
         private static readonly int Explosion = Animator.StringToHash("explosion");
         private static readonly int Ignition = Animator.StringToHash("ignite");
         [SerializeField] private Animator _animator;
