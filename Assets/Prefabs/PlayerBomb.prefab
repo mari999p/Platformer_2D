@@ -168,16 +168,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb: {fileID: 7874132314497934216}
+  _bombAnimation: {fileID: 87483070043714854}
+  _layer:
+    serializedVersion: 2
+    m_Bits: 2440
   _speed: 0
   _lifetime: 2
   _damage: 5
-  _bombAnimation: {fileID: 87483070043714854}
   _blastRadius: 2.07
-  _layer:
-    serializedVersion: 2
-    m_Bits: 392
   _explosionForce: 5.9
-  _defuseAnimationDuration: 5
+  _defuseAnimationDuration: 3
 --- !u!50 &7874132314497934216
 Rigidbody2D:
   serializedVersion: 4
