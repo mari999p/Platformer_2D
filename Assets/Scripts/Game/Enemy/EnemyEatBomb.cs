@@ -8,6 +8,7 @@ namespace Platformer.Game.Enemy
     public class EnemyEatBomb : EnemyBehaviour
     {
         #region Variables
+
         [Header(nameof(EnemyEatBomb))]
         public bool isEating;
         [SerializeField] private EnemyAnimation _eatAnimation;

@@ -137,5 +137,6 @@ namespace Platformer.Game.Objects.Bomb
         }
 
         #endregion
+        
     }
 }

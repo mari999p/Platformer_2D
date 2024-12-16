@@ -8,10 +8,12 @@ namespace Platformer.Game.Enemy
     public class EnemyThrowBomb : EnemyBehaviour
     {
         #region Variables
+
         [Header(nameof(EnemyThrowBomb))]
         public bool isDefusing;
         [SerializeField] private EnemyAnimation _defuseAnimation;
         [SerializeField] private LayerMask _bombLayer;
+        [SerializeField] private EnemyDeath _enemyDeath;
         [SerializeField] private float _defuseRadius = 2f;
         [SerializeField] private float _throwForce = 5f;
         private bool _bombNearby;
@@ -20,6 +22,11 @@ namespace Platformer.Game.Enemy
 
         #region Unity lifecycle
 
+        private void Awake()
+        {
+            _enemyDeath.OnHappened += OnEnemyDeath;
+        }
+
         private void Update()
         {
             CheckForBombs();
@@ -27,6 +34,11 @@ namespace Platformer.Game.Enemy
             {
                 DefuseAndThrowBomb();
             }
+        }
+
+        private void OnDestroy()
+        {
+            _enemyDeath.OnHappened -= OnEnemyDeath;
         }
 
         private void OnDrawGizmosSelected()
@@ -76,6 +88,11 @@ namespace Platformer.Game.Enemy
             }
 
             isDefusing = false;
+        }
+
+        private void OnEnemyDeath()
+        {
+            enabled = false;
         }
 
         #endregion

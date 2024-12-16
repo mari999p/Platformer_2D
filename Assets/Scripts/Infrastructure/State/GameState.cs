@@ -26,7 +26,7 @@ namespace Platformer.Infrastructure.State
         public override void Enter()
         {
             PlayerMovement playerMovement = Object.FindObjectOfType<PlayerMovement>();
-            _inputService.Initialize(Camera.main, playerMovement.transform);
+            _inputService.Initialize();
         }
 
         public override void Exit()

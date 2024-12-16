@@ -85,10 +85,12 @@ namespace Platformer.Game.Player.Base
 
         private void Move()
         {
-            Vector2 velocity = _inputService.MoveDirection.normalized * _speed;
-            velocity.y = _rb.velocity.y;
-            _rb.velocity = velocity;
-            _animation.SetMovement(velocity.magnitude);
+            if (_isGrounded)
+            {
+                Vector2 velocity = new Vector2(_inputService.MoveDirection.x * _speed, _rb.velocity.y);
+                _rb.velocity = velocity;
+                _animation.SetMovement(velocity.magnitude);
+            }
         }
 
         private void Rotate()

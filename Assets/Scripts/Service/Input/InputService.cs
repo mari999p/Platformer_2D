@@ -22,7 +22,7 @@ namespace Platformer.Service.Input
 
         void Dispose();
 
-        void Initialize(Camera mainCamera, Transform playerTransform);
+        void Initialize();
 
         #endregion
     }

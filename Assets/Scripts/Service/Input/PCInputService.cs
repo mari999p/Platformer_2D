@@ -36,7 +36,7 @@ namespace Platformer.Service.Input
 
         #region IInputService
 
-        public void Initialize(Camera mainCamera, Transform playerTransform) { }
+        public void Initialize() { }
 
         public void Dispose()
         {
