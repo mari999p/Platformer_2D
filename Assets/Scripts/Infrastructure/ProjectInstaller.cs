@@ -1,7 +1,8 @@
 using Platformer.Infrastructure.State;
 using Platformer.Service.Input;
-using Platformer.Service.SceneLoading;
+using Platformer.Service.Mission;
 using Zenject;
+// using Platformer.Service.Mission;
 
 namespace Platformer.Infrastructure
 {
@@ -11,9 +12,9 @@ namespace Platformer.Infrastructure
 
         public override void InstallBindings()
         {
-            StateMachineInstaller.Install(Container);
-            SceneLoaderServiceInstaller.Install(Container);
             InputServiceInstaller.Install(Container);
+            StateMachineInstaller.Install(Container);
+            MissionServiceInstaller.Install(Container);
         }
 
         #endregion
