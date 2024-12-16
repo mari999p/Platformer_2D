@@ -1,5 +1,3 @@
-using Platformer.Game.Utils.Log;
-
 namespace Platformer.Infrastructure.State
 {
     public class StateMachine
@@ -16,7 +14,6 @@ namespace Platformer.Infrastructure.State
 
         public StateMachine(StateFactory factory)
         {
-            this.Error();
             _factory = factory;
         }
 

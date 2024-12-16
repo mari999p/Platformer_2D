@@ -87,7 +87,7 @@ namespace Platformer.Game.Player.Base
         {
             if (_isGrounded)
             {
-                Vector2 velocity = new Vector2(_inputService.MoveDirection.x * _speed, _rb.velocity.y);
+                Vector2 velocity = new(_inputService.MoveDirection.x * _speed, _rb.velocity.y);
                 _rb.velocity = velocity;
                 _animation.SetMovement(velocity.magnitude);
             }

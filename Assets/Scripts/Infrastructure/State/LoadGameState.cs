@@ -1,5 +1,4 @@
 using System.Collections;
-using Platformer.Game.Utils.Log;
 using Platformer.Service.Coroutine;
 using Platformer.Service.SceneLoading;
 
@@ -18,7 +17,6 @@ namespace Platformer.Infrastructure.State
 
         public LoadGameState(SceneLoaderService sceneLoaderService, CoroutineRunner coroutineRunner)
         {
-           
             _sceneLoaderService = sceneLoaderService;
             _coroutineRunner = coroutineRunner;
         }

@@ -1,4 +1,4 @@
-using Platformer.Game.Utils.Log;
+using Platformer.Utils.Log;
 using Zenject;
 
 namespace Platformer.Infrastructure.State

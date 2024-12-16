@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
-namespace Platformer.Game.Utils.Log
+namespace Platformer.Utils.Log
 {
     public static class Logger
     {
@@ -27,7 +27,6 @@ namespace Platformer.Game.Utils.Log
 
         private static string FormatMessage(Type type, string memberName, object message)
         {
-            // TODO: Multitrteading
             string prefix = Application.isEditor
                 ? $"[{Time.frameCount}]"
                 : $"[{DateTime.Now.ToString("HH:mm:ss")} : {Time.frameCount}]";

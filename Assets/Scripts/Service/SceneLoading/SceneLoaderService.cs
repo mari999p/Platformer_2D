@@ -4,6 +4,8 @@ namespace Platformer.Service.SceneLoading
 {
     public class SceneLoaderService
     {
+        #region Public methods
+
         public void Load(string sceneName)
         {
             SceneManager.LoadScene(sceneName);
@@ -11,5 +13,6 @@ namespace Platformer.Service.SceneLoading
 
         public void LoadAsync(string sceneName) { }
 
+        #endregion
     }
 }
