@@ -18,8 +18,8 @@ TagManager:
   - EnemyTrigger
   - EnemyBomb
   - Objects
-  - 
-  - 
+  - PickUps
+  - Exit Point
   - 
   - 
   - 

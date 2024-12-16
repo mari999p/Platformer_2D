@@ -107,7 +107,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1148676991
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 787ea9a2d812e6f4e878a477b01b96e9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -168,14 +168,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb: {fileID: 7874132314497934216}
-  _speed: 0
-  _lifetime: 1
-  _damage: 1
   _bombAnimation: {fileID: 87483070043714854}
-  _blastRadius: 2
   _layer:
     serializedVersion: 2
     m_Bits: 8
+  _speed: 2
+  _lifetime: 1.5
+  _damage: 1
+  _blastRadius: 2
   _explosionForce: 4
   _defuseAnimationDuration: 5
 --- !u!50 &7874132314497934216
