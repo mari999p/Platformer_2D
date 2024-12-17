@@ -7,6 +7,8 @@ namespace Platformer.Service.Mission
 {
     public class MissionService : MonoBehaviour
     {
+       
+
         #region Variables
 
         [SerializeField] private GameObject _exitPoint;
@@ -15,6 +17,9 @@ namespace Platformer.Service.Mission
         [SerializeField] private bool _missionCompleted;
         [SerializeField] private bool _missionStarted;
         [SerializeField] private float _timeRemaining;
+        public float MissionDuration => _missionDuration;
+        public bool MissionCompleted => _missionCompleted;
+     
 
         #endregion
 
@@ -80,5 +85,7 @@ namespace Platformer.Service.Mission
         }
 
         #endregion
+
+      
     }
 }
