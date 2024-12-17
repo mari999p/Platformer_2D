@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Platformer.Game.PickUps
 {
-    public class PickUps: MonoBehaviour
+    public class PickUps : MonoBehaviour
     {
         #region Unity lifecycle
 
