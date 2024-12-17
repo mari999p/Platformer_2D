@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Platformer.Game.PickUps
 {
-    public class HealthPack: PickUps
+    public class HealthPack : PickUps
     {
         #region Variables
 
