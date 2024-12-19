@@ -1,4 +1,5 @@
 using Platformer.Game.Common;
+using Platformer.Game.Player;
 using Platformer.Game.Player.Base;
 using UnityEngine;
 

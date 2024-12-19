@@ -1,4 +1,3 @@
-using Platformer.Game.Enemy.Base;
 using UnityEngine;
 
 namespace Platformer.Game.Enemy
@@ -8,7 +7,7 @@ namespace Platformer.Game.Enemy
         #region Variables
 
         [SerializeField] private Rigidbody2D _rb;
-        [SerializeField] private Collider2D _groundCheckCollider;
+        // [SerializeField] private Collider2D _groundCheckCollider;
         [SerializeField] private LayerMask _groundLayer;
         [SerializeField] private float _speed = 3f;
         private bool _isOnGround;
@@ -25,7 +24,7 @@ namespace Platformer.Game.Enemy
                 return;
             }
 
-            CheckGroundStatus();
+            // CheckGroundStatus();
             Rotate();
             Move();
             if (!_isOnGround)
@@ -57,10 +56,10 @@ namespace Platformer.Game.Enemy
 
         #region Private methods
 
-        private void CheckGroundStatus()
-        {
-            _isOnGround = _groundCheckCollider.IsTouchingLayers(_groundLayer);
-        }
+        // private void CheckGroundStatus()
+        // {
+        //     _isOnGround = _groundCheckCollider.IsTouchingLayers(_groundLayer);
+        // }
 
         private void Move()
         {

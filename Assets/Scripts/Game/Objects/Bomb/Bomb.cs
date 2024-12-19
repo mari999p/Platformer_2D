@@ -1,6 +1,7 @@
 using System.Collections;
 using Platformer.Game.Common;
 using Platformer.Game.Enemy;
+using Platformer.Game.Enemy.EnemyAttacks;
 using UnityEngine;
 
 namespace Platformer.Game.Objects.Bomb
@@ -51,6 +52,12 @@ namespace Platformer.Game.Objects.Bomb
 
             if (other.TryGetComponent(out EnemyDefuseBomb enemy) && !enemy.isDefusing)
             {
+                Explode();
+            }
+
+            if (other.TryGetComponent(out IDamageable damageable))
+            {
+                damageable.ApplyDamage(_damage);
                 Explode();
             }
         }

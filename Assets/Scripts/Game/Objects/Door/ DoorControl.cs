@@ -1,4 +1,6 @@
 using System.Collections;
+using Platformer.Game.Player;
+using Platformer.Game.Player.Animation;
 using Platformer.Game.Player.Base;
 using UnityEngine;
 
