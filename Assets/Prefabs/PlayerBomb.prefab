@@ -171,12 +171,12 @@ MonoBehaviour:
   _bombAnimation: {fileID: 87483070043714854}
   _layer:
     serializedVersion: 2
-    m_Bits: 2440
+    m_Bits: 2432
   _speed: 0
   _lifetime: 2
   _damage: 5
   _blastRadius: 2.07
-  _explosionForce: 5.9
+  _explosionForce: 8.24
   _defuseAnimationDuration: 3
 --- !u!50 &7874132314497934216
 Rigidbody2D:

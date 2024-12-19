@@ -129,9 +129,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8822887264796952177}
-  - component: {fileID: 6058354347099390879}
   - component: {fileID: 7874132314497934216}
   - component: {fileID: 5188375802984784809}
+  - component: {fileID: 4109805278127200799}
   m_Layer: 10
   m_Name: EnemyBomb
   m_TagString: Untagged
@@ -155,29 +155,6 @@ Transform:
   - {fileID: 4189766223702956136}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6058354347099390879
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8908711689985571895}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fed8bd6994fa4b7ea46fd029e044c337, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rb: {fileID: 7874132314497934216}
-  _bombAnimation: {fileID: 87483070043714854}
-  _layer:
-    serializedVersion: 2
-    m_Bits: 8
-  _speed: 2
-  _lifetime: 1.5
-  _damage: 1
-  _blastRadius: 2
-  _explosionForce: 4
-  _defuseAnimationDuration: 5
 --- !u!50 &7874132314497934216
 Rigidbody2D:
   serializedVersion: 4
@@ -193,7 +170,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0
-  m_GravityScale: 2
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -240,3 +217,26 @@ CircleCollider2D:
   m_Offset: {x: -0, y: 0}
   serializedVersion: 2
   m_Radius: 0.19
+--- !u!114 &4109805278127200799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8908711689985571895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fed8bd6994fa4b7ea46fd029e044c337, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rb: {fileID: 7874132314497934216}
+  _bombAnimation: {fileID: 87483070043714854}
+  _layer:
+    serializedVersion: 2
+    m_Bits: 8
+  _speed: 10
+  _lifetime: 1
+  _damage: 2
+  _blastRadius: 2.54
+  _explosionForce: 0
+  _defuseAnimationDuration: 5
