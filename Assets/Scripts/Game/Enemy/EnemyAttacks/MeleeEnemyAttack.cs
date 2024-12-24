@@ -12,7 +12,7 @@ namespace Platformer.Game.Enemy.EnemyAttacks
         [SerializeField] private LayerMask _hitMask;
         [SerializeField] private float _hitRadius = 1f;
         [SerializeField] private int _damage = 1;
-
+        [SerializeField] private float _knockbackForce = 5f;
         #endregion
 
         #region Unity lifecycle
@@ -50,6 +50,11 @@ namespace Platformer.Game.Enemy.EnemyAttacks
                 if (col.TryGetComponent(out IDamageable damageable))
                 {
                     damageable.ApplyDamage(_damage);
+                    if (col.TryGetComponent(out Rigidbody2D rb))
+                    {
+                        Vector2 knockbackDirection = (col.transform.position - _hitMarkerTransform.position).normalized;
+                        rb.AddForce(knockbackDirection * _knockbackForce, ForceMode2D.Impulse);
+                    }
                 }
             }
         }

@@ -1,8 +1,9 @@
 using Platformer.Infrastructure.State;
 using Platformer.Service.Input;
+using Platformer.Service.LevelCompletion;
+using Platformer.Service.LevelLoading;
 using Platformer.Service.Mission;
 using Zenject;
-// using Platformer.Service.Mission;
 
 namespace Platformer.Infrastructure
 {
@@ -15,6 +16,8 @@ namespace Platformer.Infrastructure
             InputServiceInstaller.Install(Container);
             StateMachineInstaller.Install(Container);
             MissionServiceInstaller.Install(Container);
+            LevelLoadingServiceInstaller.Install(Container);
+            LevelCompletionServiceInstaller.Install(Container);
         }
 
         #endregion

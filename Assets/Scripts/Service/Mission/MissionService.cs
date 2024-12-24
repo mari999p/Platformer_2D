@@ -1,6 +1,5 @@
 using System;
 using Platformer.Game.Player;
-using Platformer.Game.Player.Base;
 using Platformer.Utils.Log;
 using UnityEngine;
 
@@ -8,8 +7,6 @@ namespace Platformer.Service.Mission
 {
     public class MissionService : MonoBehaviour
     {
-       
-
         #region Variables
 
         [SerializeField] private GameObject _exitPoint;
@@ -18,15 +15,20 @@ namespace Platformer.Service.Mission
         [SerializeField] private bool _missionCompleted;
         [SerializeField] private bool _missionStarted;
         [SerializeField] private float _timeRemaining;
-        public float MissionDuration => _missionDuration;
-        public bool MissionCompleted => _missionCompleted;
-     
 
         #endregion
 
         #region Events
 
         public event Action OnMissionComplete;
+        public event Action<float> OnTimeAdded;
+
+        #endregion
+
+        #region Properties
+
+        public bool MissionCompleted => _missionCompleted;
+        public float MissionDuration => _missionDuration;
 
         #endregion
 
@@ -37,7 +39,6 @@ namespace Platformer.Service.Mission
             _playerMovement = FindObjectOfType<PlayerMovement>();
             if (_playerMovement == null)
             {
-                this.Error("PlayerMovement not found!");
                 return;
             }
 
@@ -67,6 +68,16 @@ namespace Platformer.Service.Mission
 
         #endregion
 
+        #region Public methods
+
+        public void AddTime(float timeToAdd)
+        {
+            _timeRemaining += timeToAdd;
+            OnTimeAdded?.Invoke(timeToAdd);
+        }
+
+        #endregion
+
         #region Private methods
 
         private void EndMission(bool success)
@@ -86,7 +97,5 @@ namespace Platformer.Service.Mission
         }
 
         #endregion
-
-      
     }
 }

@@ -1,4 +1,5 @@
 using System.Collections;
+using Platformer.Game.Common;
 using Platformer.Game.Enemy.Animation;
 using Platformer.Game.Objects.Bomb;
 using UnityEngine;
@@ -72,6 +73,9 @@ namespace Platformer.Game.Enemy.EnemyAttacks
             yield return new WaitForSeconds(0.5f);
             Collider2D[] bombs = Physics2D.OverlapCircleAll(transform.position, _defuseRadius, _bombLayer);
 
+            GameObject player = GameObject.FindGameObjectWithTag(Tag.Player);
+            Vector2 playerPosition = player != null ? player.transform.position : Vector2.zero;
+
             foreach (Collider2D bombCollider in bombs)
             {
                 if (bombCollider.TryGetComponent(out Bomb bomb))
@@ -81,7 +85,8 @@ namespace Platformer.Game.Enemy.EnemyAttacks
 
                     if (bombRigidbody != null)
                     {
-                        Vector2 throwDirection = (Vector2.up + Vector2.right).normalized;
+                        Vector2 throwDirection = (playerPosition - (Vector2)transform.position).normalized;
+                        throwDirection.y = 1; 
                         bombRigidbody.AddForce(throwDirection * _throwForce, ForceMode2D.Impulse);
                     }
                 }

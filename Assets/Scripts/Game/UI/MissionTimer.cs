@@ -31,6 +31,8 @@ namespace Platformer.Game.UI
             if (_missionService != null)
             {
                 _missionService.OnMissionComplete += HandleMissionComplete;
+                _missionService.OnTimeAdded += HandleTimeAdded;
+
                 _missionStarted = true;
                 _timeRemaining = _missionService.MissionDuration;
             }
@@ -41,6 +43,7 @@ namespace Platformer.Game.UI
             if (_missionService != null)
             {
                 _missionService.OnMissionComplete -= HandleMissionComplete;
+                _missionService.OnTimeAdded -= HandleTimeAdded;
             }
         }
 
@@ -51,6 +54,11 @@ namespace Platformer.Game.UI
         private void HandleMissionComplete()
         {
             _missionStarted = false;
+        }
+        private void HandleTimeAdded(float addedTime)
+        {
+            _timeRemaining += addedTime;
+            UpdateTimerUI();
         }
 
         private void UpdateTimerUI()
