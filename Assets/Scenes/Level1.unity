@@ -2416,8 +2416,8 @@ GameObject:
   - component: {fileID: 209893171}
   - component: {fileID: 209893170}
   - component: {fileID: 209893169}
-  - component: {fileID: 209893172}
   - component: {fileID: 209893173}
+  - component: {fileID: 209893174}
   m_Layer: 12
   m_Name: Green Bottle
   m_TagString: Untagged
@@ -2513,19 +2513,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1310141703}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &209893172
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 209893168}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09877c793dee4cccae066ef325f679f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _timeToAdd: 10
 --- !u!61 &209893173
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2571,6 +2558,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.24, y: 0.3}
   m_EdgeRadius: 0
+--- !u!114 &209893174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 209893168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09877c793dee4cccae066ef325f679f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _timeToAdd: 10
 --- !u!1 &210693206
 GameObject:
   m_ObjectHideFlags: 0
@@ -4725,8 +4725,8 @@ GameObject:
   - component: {fileID: 360442328}
   - component: {fileID: 360442332}
   - component: {fileID: 360442331}
-  - component: {fileID: 360442330}
   - component: {fileID: 360442329}
+  - component: {fileID: 360442333}
   m_Layer: 12
   m_Name: Green Bottle (1)
   m_TagString: Untagged
@@ -4794,19 +4794,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.24, y: 0.3}
   m_EdgeRadius: 0
---- !u!114 &360442330
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 360442327}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09877c793dee4cccae066ef325f679f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _timeToAdd: 10
 --- !u!95 &360442331
 Animator:
   serializedVersion: 5
@@ -4880,6 +4867,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &360442333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 360442327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09877c793dee4cccae066ef325f679f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _timeToAdd: 10
 --- !u!1 &363775265
 GameObject:
   m_ObjectHideFlags: 0
@@ -5838,21 +5838,9 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2354401781228166877, guid: 82edcdfa71e18be4893eb5145ae44456, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 164
-      objectReference: {fileID: 0}
-    - target: {fileID: 2354401781228166877, guid: 82edcdfa71e18be4893eb5145ae44456, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -141
-      objectReference: {fileID: 0}
-    - target: {fileID: 4192510492325466740, guid: 82edcdfa71e18be4893eb5145ae44456, type: 3}
-      propertyPath: _missionService
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 4496894952911859529, guid: 82edcdfa71e18be4893eb5145ae44456, type: 3}
       propertyPath: m_Name
-      value: Canvas (1)
+      value: 'Canvas '
       objectReference: {fileID: 0}
     - target: {fileID: 4769893699149888413, guid: 82edcdfa71e18be4893eb5145ae44456, type: 3}
       propertyPath: m_Pivot.x
@@ -9204,7 +9192,7 @@ GameObject:
   - component: {fileID: 833877638}
   - component: {fileID: 833877640}
   - component: {fileID: 833877641}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Exit Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9309,8 +9297,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1349563921
-  m_SortingLayer: 2
+  m_SortingLayerID: -1954643123
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 0b1ce95c473970e44a4460914c860cc2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -10659,8 +10647,8 @@ GameObject:
   - component: {fileID: 920315368}
   - component: {fileID: 920315372}
   - component: {fileID: 920315371}
-  - component: {fileID: 920315370}
   - component: {fileID: 920315369}
+  - component: {fileID: 920315373}
   m_Layer: 12
   m_Name: Green Bottle (3)
   m_TagString: Untagged
@@ -10728,19 +10716,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.24, y: 0.3}
   m_EdgeRadius: 0
---- !u!114 &920315370
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 920315367}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09877c793dee4cccae066ef325f679f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _timeToAdd: 10
 --- !u!95 &920315371
 Animator:
   serializedVersion: 5
@@ -10814,6 +10789,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &920315373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920315367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09877c793dee4cccae066ef325f679f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _timeToAdd: 10
 --- !u!1 &935516297
 GameObject:
   m_ObjectHideFlags: 0
@@ -66042,7 +66030,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1310141703
 Transform:
   m_ObjectHideFlags: 0
@@ -66522,7 +66510,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1371863276}
-  - component: {fileID: 1371863277}
   m_Layer: 5
   m_Name: MissionTimer
   m_TagString: Untagged
@@ -66550,20 +66537,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1371863277
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1371863275}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60b9f13587414c119d1d8b681ba133b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _timerText: {fileID: 1198520835}
-  _missionService: {fileID: 0}
 --- !u!1 &1374121267
 GameObject:
   m_ObjectHideFlags: 0
@@ -70745,32 +70718,16 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1750375878}
-  - component: {fileID: 1750375877}
+  - component: {fileID: 1750375880}
+  - component: {fileID: 1750375881}
+  - component: {fileID: 1750375879}
   m_Layer: 0
-  m_Name: Mission
+  m_Name: MissionService
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1750375877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1750375876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb20d5d4504d4747a66ade0b97c50632, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _exitPoint: {fileID: 833877636}
-  _missionDuration: 60
-  _playerMovement: {fileID: 1835646334}
-  _missionCompleted: 0
-  _missionStarted: 0
-  _timeRemaining: 0
 --- !u!4 &1750375878
 Transform:
   m_ObjectHideFlags: 0
@@ -70786,6 +70743,47 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1750375879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750375876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 339045ed4af848efb220987a7410e049, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _observer: {fileID: 833877641}
+  _timeLimit: 121
+--- !u!114 &1750375880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750375876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5bc541d5b084ef0aea238a58227d317, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _missionCondition: {fileID: 1750375879}
+--- !u!114 &1750375881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750375876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95af2da0e2cd4a8a84710cfc74b9895e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _conditions:
+  - {fileID: 1750375879}
 --- !u!1 &1756785505
 GameObject:
   m_ObjectHideFlags: 0
@@ -80105,8 +80103,8 @@ GameObject:
   - component: {fileID: 2000968636}
   - component: {fileID: 2000968640}
   - component: {fileID: 2000968639}
-  - component: {fileID: 2000968638}
   - component: {fileID: 2000968637}
+  - component: {fileID: 2000968641}
   m_Layer: 12
   m_Name: Green Bottle (2)
   m_TagString: Untagged
@@ -80174,19 +80172,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.24, y: 0.3}
   m_EdgeRadius: 0
---- !u!114 &2000968638
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2000968635}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09877c793dee4cccae066ef325f679f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _timeToAdd: 10
 --- !u!95 &2000968639
 Animator:
   serializedVersion: 5
@@ -80260,6 +80245,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2000968641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2000968635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09877c793dee4cccae066ef325f679f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _timeToAdd: 10
 --- !u!1 &2006022382
 GameObject:
   m_ObjectHideFlags: 0
