@@ -1,4 +1,3 @@
-using Platformer.Utils.Log;
 using Zenject;
 
 namespace Platformer.Infrastructure.State
@@ -15,7 +14,6 @@ namespace Platformer.Infrastructure.State
 
         public StateFactory(IInstantiator instantiator)
         {
-            this.Error();
             _instantiator = instantiator;
         }
 
