@@ -1,7 +1,9 @@
 using System;
-using Platformer.Game.Player;
+using Platformer.Game.UI;
+using Platformer.Service.Mission.ConcreteMissions;
 using Platformer.Utils.Log;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 namespace Platformer.Service.Mission
 {
@@ -9,91 +11,79 @@ namespace Platformer.Service.Mission
     {
         #region Variables
 
-        [SerializeField] private GameObject _exitPoint;
-        [SerializeField] private float _missionDuration = 60f;
-        [SerializeField] private PlayerMovement _playerMovement;
-        [SerializeField] private bool _missionCompleted;
-        [SerializeField] private bool _missionStarted;
-        [SerializeField] private float _timeRemaining;
+        private readonly MissionFactory _factory = new();
+
+        private Mission _currentMission;
+        private MissionTimer _missionTimer;
 
         #endregion
 
         #region Events
 
-        public event Action OnMissionComplete;
-        public event Action<float> OnTimeAdded;
-
-        #endregion
-
-        #region Properties
-
-        public bool MissionCompleted => _missionCompleted;
-        public float MissionDuration => _missionDuration;
+        public event Action OnCompleted;
+        public event Action OnStarted;
 
         #endregion
 
         #region Unity lifecycle
 
-        private void Start()
-        {
-            _playerMovement = FindObjectOfType<PlayerMovement>();
-            if (_playerMovement == null)
-            {
-                return;
-            }
-
-            _timeRemaining = _missionDuration;
-            _missionStarted = true;
-            _missionCompleted = false;
-        }
-
         private void Update()
         {
-            if (!_missionStarted || _missionCompleted)
-            {
-                return;
-            }
-
-            _timeRemaining -= Time.deltaTime;
-
-            if (_timeRemaining <= 0)
-            {
-                EndMission(false);
-            }
-            else if (Vector2.Distance(_playerMovement.transform.position, _exitPoint.transform.position) < 0.5f)
-            {
-                EndMission(true);
-            }
+            _currentMission?.Update();
         }
 
         #endregion
 
         #region Public methods
 
-        public void AddTime(float timeToAdd)
+        public void Begin()
         {
-            _timeRemaining += timeToAdd;
-            OnTimeAdded?.Invoke(timeToAdd);
+            Assert.IsNotNull(_currentMission);
+            _currentMission.Begin();
+            OnStarted?.Invoke();
+        }
+
+        public void Dispose()
+        {
+            if (_currentMission != null)
+            {
+                _currentMission.OnCompleted -= MissionCompletedCallback;
+                _currentMission.Stop();
+            }
+
+            _currentMission = null;
+        }
+
+        public void Initialize()
+        {
+            MissionConditionHolder holder = FindObjectOfType<MissionConditionHolder>();
+            if (holder == null)
+            {
+                this.Error("MissionConditionHolder not found in the scene.");
+                return;
+            }
+
+            _currentMission = _factory.Create(holder.MissionCondition);
+            _currentMission.OnCompleted += MissionCompletedCallback;
+            _missionTimer = FindObjectOfType<MissionTimer>();
+
+            if (_missionTimer != null)
+            {
+                _missionTimer.Initialize((ReachExitTimePointMission)_currentMission);
+            }
+            else
+            {
+                this.Error("MissionTimer not found in the scene.");
+            }
         }
 
         #endregion
 
         #region Private methods
 
-        private void EndMission(bool success)
+        private void MissionCompletedCallback()
         {
-            _missionStarted = false;
-            _missionCompleted = true;
-
-            if (success)
-            {
-                this.Log("Mission Completed Successfully!");
-                OnMissionComplete?.Invoke();
-            }
-            else
-            {
-                this.Log("Mission Failed! Time is up!");
-            }
+            OnCompleted?.Invoke();
         }
 
         #endregion
