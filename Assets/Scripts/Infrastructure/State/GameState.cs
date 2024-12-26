@@ -1,5 +1,4 @@
 using Platformer.Game.Player;
-using Platformer.Game.Player.Base;
 using Platformer.Service.Input;
 using Platformer.Service.LevelCompletion;
 using Platformer.Service.Mission;
@@ -19,9 +18,9 @@ namespace Platformer.Infrastructure.State
         #endregion
 
         #region Setup/Teardown
-
-        [Inject]
-        public GameState(LevelCompletionService levelCompletionService,IInputService inputService, MissionService missionService)
+        
+        public GameState(LevelCompletionService levelCompletionService, IInputService inputService,
+            MissionService missionService)
         {
             _levelCompletionService = levelCompletionService;
             _inputService = inputService;
@@ -35,18 +34,20 @@ namespace Platformer.Infrastructure.State
         public override void Enter()
         {
             _levelCompletionService.Initialize();
-            Object.FindObjectOfType<PlayerMovement>();
+            _missionService.Initialize();
+            _missionService.Begin();
+            PlayerMovement playerMovement = Object.FindObjectOfType<PlayerMovement>();
             _inputService.Initialize();
+           
         }
 
         public override void Exit()
         {
+            _missionService.Dispose();
             _levelCompletionService.Dispose();
             _inputService.Dispose();
         }
 
         #endregion
-
-      
     }
 }
