@@ -1,5 +1,5 @@
 using System;
-using Platformer.Service.Mission;
+using Platformer.Service.Mission.ConcreteMissions;
 using TMPro;
 using UnityEngine;
 
@@ -9,10 +9,9 @@ namespace Platformer.Game.UI
     {
         #region Variables
 
-        [SerializeField] private TMP_Text _timerText;
-        [SerializeField] private MissionService _missionService;
-        private bool _missionStarted;
-        private float _timeRemaining;
+        [SerializeField] private TMP_Text _timeDisplay;
+        [SerializeField] private float _timeRemaining;
+        private ReachExitTimePointMission _mission;
 
         #endregion
 
@@ -20,57 +19,43 @@ namespace Platformer.Game.UI
 
         private void Update()
         {
-            if (_missionStarted && _missionService != null && !_missionService.MissionCompleted)
+            if (_mission != null && !_mission.IsCompleted)
             {
-                UpdateTimerUI();
+                _timeRemaining -= Time.deltaTime;
+
+                if (_timeRemaining <= 0)
+                {
+                    _timeRemaining = 0;
+                }
+
+                UpdateTimeDisplay(_timeRemaining);
             }
         }
 
-        private void OnEnable()
-        {
-            if (_missionService != null)
-            {
-                _missionService.OnMissionComplete += HandleMissionComplete;
-                _missionService.OnTimeAdded += HandleTimeAdded;
+        #endregion
 
-                _missionStarted = true;
-                _timeRemaining = _missionService.MissionDuration;
-            }
-        }
+        #region Public methods
 
-        private void OnDisable()
+        public void Initialize(ReachExitTimePointMission mission)
         {
-            if (_missionService != null)
-            {
-                _missionService.OnMissionComplete -= HandleMissionComplete;
-                _missionService.OnTimeAdded -= HandleTimeAdded;
-            }
+            _mission = mission;
+            _timeRemaining = mission.Condition.TimeAllowed;
+            mission.OnCompleted += HandleMissionCompleted;
         }
 
         #endregion
 
         #region Private methods
 
-        private void HandleMissionComplete()
+        private void HandleMissionCompleted()
         {
-            _missionStarted = false;
-        }
-        private void HandleTimeAdded(float addedTime)
-        {
-            _timeRemaining += addedTime;
-            UpdateTimerUI();
+            _timeDisplay.text = "Mission Complete!";
         }
 
-        private void UpdateTimerUI()
+        private void UpdateTimeDisplay(float time)
         {
-            _timeRemaining -= Time.deltaTime;
-            if (_timeRemaining < 0)
-            {
-                _timeRemaining = 0;
-            }
-
-            TimeSpan timeSpan = TimeSpan.FromSeconds(_timeRemaining);
-            _timerText.text = $"{timeSpan.Minutes:D2}:{timeSpan.Seconds:D2}";
+            TimeSpan timeSpan = TimeSpan.FromSeconds(time);
+            _timeDisplay.text = $"{timeSpan.Minutes:D2}:{timeSpan.Seconds:D2}";
         }
 
         #endregion
