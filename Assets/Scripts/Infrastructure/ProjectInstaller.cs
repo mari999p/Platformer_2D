@@ -1,9 +1,12 @@
 using Platformer.Infrastructure.State;
+using Platformer.Service.Coroutine;
 using Platformer.Service.Input;
 using Platformer.Service.LevelCompletion;
 using Platformer.Service.LevelLoading;
 using Platformer.Service.Mission;
+using Platformer.Service.SceneLoading;
 using Zenject;
+// using Platformer.Service.LevelCompletion;
 
 namespace Platformer.Infrastructure
 {
@@ -13,11 +16,13 @@ namespace Platformer.Infrastructure
 
         public override void InstallBindings()
         {
-            InputServiceInstaller.Install(Container);
             StateMachineInstaller.Install(Container);
-            MissionServiceInstaller.Install(Container);
             LevelLoadingServiceInstaller.Install(Container);
+            SceneLoaderServiceInstaller.Install(Container);
             LevelCompletionServiceInstaller.Install(Container);
+            MissionServiceInstaller.Install(Container);
+            CoroutineRunnerInstaller.Install(Container);
+            InputServiceInstaller.Install(Container);
         }
 
         #endregion
