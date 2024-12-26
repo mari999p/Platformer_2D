@@ -51350,6 +51350,10 @@ PrefabInstance:
       propertyPath: _unitHp
       value: 
       objectReference: {fileID: 1835646339}
+    - target: {fileID: 8278258354410678317, guid: 82edcdfa71e18be4893eb5145ae44456, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
