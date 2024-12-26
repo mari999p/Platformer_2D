@@ -21,6 +21,11 @@ namespace Platformer.Service.Mission.ConcreteMissions
 
         #region Public methods
 
+        public void AddTimeToMission(float time)
+        {
+            Condition.IncreaseTimeAllowed(time);
+        }
+
         public void InvokeFailure()
         {
             this.Log("Миссия не выполнена: время истекло!");

@@ -36,11 +36,28 @@ namespace Platformer.Game.UI
 
         #region Public methods
 
+        public void AddTime(float timeToAdd)
+        {
+            _timeRemaining += timeToAdd;
+            if (_mission != null)
+            {
+                _mission.AddTimeToMission(timeToAdd);
+            }
+
+            UpdateTimeDisplay(_timeRemaining);
+        }
+
         public void Initialize(ReachExitTimePointMission mission)
         {
             _mission = mission;
             _timeRemaining = mission.Condition.TimeAllowed;
             mission.OnCompleted += HandleMissionCompleted;
+        }
+
+        public void UpdateTimeDisplay(float time)
+        {
+            TimeSpan timeSpan = TimeSpan.FromSeconds(time);
+            _timeDisplay.text = $"{timeSpan.Minutes:D2}:{timeSpan.Seconds:D2}";
         }
 
         #endregion
@@ -50,12 +67,6 @@ namespace Platformer.Game.UI
         private void HandleMissionCompleted()
         {
             _timeDisplay.text = "Mission Complete!";
-        }
-
-        private void UpdateTimeDisplay(float time)
-        {
-            TimeSpan timeSpan = TimeSpan.FromSeconds(time);
-            _timeDisplay.text = $"{timeSpan.Minutes:D2}:{timeSpan.Seconds:D2}";
         }
 
         #endregion

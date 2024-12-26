@@ -18,5 +18,14 @@ namespace Platformer.Service.Mission.Conditions
         public float TimeAllowed => _timeLimit;
 
         #endregion
+
+        #region Public methods
+
+        public void IncreaseTimeAllowed(float additionalTime)
+        {
+            _timeLimit += additionalTime;
+        }
+
+        #endregion
     }
 }

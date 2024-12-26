@@ -23,5 +23,6 @@ namespace Platformer.Game.PickUps
         protected virtual void PerformActions(Collider2D other) { }
 
         #endregion
+        
     }
 }
