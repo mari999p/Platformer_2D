@@ -28,7 +28,6 @@ namespace Platformer.Infrastructure.State
         public override void Enter(string sceneName)
         {
             _sceneLoaderService.Load(sceneName);
-
             _coroutineRunner.StartCoroutine(EnterGameWithDelay());
         }
 
