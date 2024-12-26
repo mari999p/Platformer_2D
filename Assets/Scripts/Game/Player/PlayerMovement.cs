@@ -43,6 +43,7 @@ namespace Platformer.Game.Player
 
         private void Start()
         {
+            
             _inputService.OnJump += Jump;
         }
 
