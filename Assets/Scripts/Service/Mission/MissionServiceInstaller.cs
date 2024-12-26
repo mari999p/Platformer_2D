@@ -8,7 +8,7 @@ namespace Platformer.Service.Mission
 
         public override void InstallBindings()
         {
-            Container.Bind<MissionService>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<MissionService>().FromNewComponentOnNewGameObject().AsSingle();
         }
 
         #endregion
