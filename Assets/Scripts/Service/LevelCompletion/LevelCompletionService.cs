@@ -15,31 +15,42 @@ namespace Platformer.Service.LevelCompletion
 
         #region Setup/Teardown
 
-        public LevelCompletionService(LevelLoadingService levelLoadingService, MissionService missionService)
+        public LevelCompletionService(MissionService missionService, LevelLoadingService levelLoadingService)
         {
-            _levelLoadingService = levelLoadingService;
             _missionService = missionService;
+            _levelLoadingService = levelLoadingService;
+        }
+
+        #endregion
+
+        #region Public methods
+
+        public void Dispose()
+        {
+            _missionService.OnCompleted -= MissionCompletedCallback;
         }
 
         public void Initialize()
         {
-            _missionService.OnMissionComplete += HandleMissionComplete;
+            _missionService.OnCompleted += MissionCompletedCallback;
         }
 
-        public void Dispose()
-        {
-            _missionService.OnMissionComplete -= HandleMissionComplete;
-        }
+        #endregion
 
-        private void HandleMissionComplete()
+        #region Private methods
+
+        private void MissionCompletedCallback()
         {
+            this.Error();
+            // TODO: Show win screen
             if (_levelLoadingService.HasNextLevel())
             {
                 _levelLoadingService.EnterNextLevel();
             }
             else
             {
-                this.Log("All levels completed!");
+                // TODO:
+                this.Error("GAME OVER!");
             }
         }
 
