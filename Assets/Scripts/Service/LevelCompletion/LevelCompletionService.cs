@@ -49,7 +49,6 @@ namespace Platformer.Service.LevelCompletion
             }
             else
             {
-                // TODO:
                 this.Error("GAME OVER!");
             }
         }

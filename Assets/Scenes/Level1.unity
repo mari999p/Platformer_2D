@@ -5926,7 +5926,12 @@ PrefabInstance:
       propertyPath: _unitHp
       value: 
       objectReference: {fileID: 1835646339}
-    m_RemovedComponents: []
+    - target: {fileID: 8278258354410678317, guid: 82edcdfa71e18be4893eb5145ae44456, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5526746604670264570, guid: 82edcdfa71e18be4893eb5145ae44456, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -70756,7 +70761,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _observer: {fileID: 833877641}
-  _timeLimit: 121
+  _timeLimit: 10
 --- !u!114 &1750375880
 MonoBehaviour:
   m_ObjectHideFlags: 0

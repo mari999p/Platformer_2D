@@ -3,7 +3,6 @@ using Platformer.Service.Input;
 using Platformer.Service.LevelCompletion;
 using Platformer.Service.Mission;
 using UnityEngine;
-using Zenject;
 
 namespace Platformer.Infrastructure.State
 {
@@ -18,7 +17,7 @@ namespace Platformer.Infrastructure.State
         #endregion
 
         #region Setup/Teardown
-        
+
         public GameState(LevelCompletionService levelCompletionService, IInputService inputService,
             MissionService missionService)
         {
@@ -38,7 +37,6 @@ namespace Platformer.Infrastructure.State
             _missionService.Begin();
             PlayerMovement playerMovement = Object.FindObjectOfType<PlayerMovement>();
             _inputService.Initialize();
-           
         }
 
         public override void Exit()
