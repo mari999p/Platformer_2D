@@ -5996,6 +5996,14 @@ PrefabInstance:
       propertyPath: _playerInventory
       value: 
       objectReference: {fileID: 1835646341}
+    - target: {fileID: 1046539576326206574, guid: 82edcdfa71e18be4893eb5145ae44456, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1046539576326206574, guid: 82edcdfa71e18be4893eb5145ae44456, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4496894952911859529, guid: 82edcdfa71e18be4893eb5145ae44456, type: 3}
       propertyPath: m_Name
       value: 'Canvas '
@@ -6084,6 +6092,10 @@ PrefabInstance:
       propertyPath: _unitHp
       value: 
       objectReference: {fileID: 1835646339}
+    - target: {fileID: 7529037425233315849, guid: 82edcdfa71e18be4893eb5145ae44456, type: 3}
+      propertyPath: _playerInventory
+      value: 
+      objectReference: {fileID: 1835646341}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -70712,7 +70724,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _observer: {fileID: 833877641}
-  _timeLimit: 20
+  _timeLimit: 5
 --- !u!114 &1750375880
 MonoBehaviour:
   m_ObjectHideFlags: 0
