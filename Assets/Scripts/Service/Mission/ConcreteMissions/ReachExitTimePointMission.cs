@@ -11,6 +11,7 @@ namespace Platformer.Service.Mission.ConcreteMissions
         #region Variables
 
         private float _elapsedTime;
+        private bool _playerInTriggerZone;
 
         #endregion
 
@@ -60,6 +61,13 @@ namespace Platformer.Service.Mission.ConcreteMissions
             {
                 InvokeFailure();
             }
+
+            if (_playerInTriggerZone && UnityEngine.Input.GetKeyDown(KeyCode.E))
+            {
+                Condition.DoorAnimation?.OpenDoor();
+                Condition.PlayerAnimation.TriggerEnterDoor();
+                InvokeCompletion();
+            }
         }
 
         #endregion
@@ -70,7 +78,15 @@ namespace Platformer.Service.Mission.ConcreteMissions
         {
             if (col.CompareTag(Tag.Player))
             {
-                InvokeCompletion();
+                _playerInTriggerZone = true;
+            }
+        }
+
+        private void ObserverExitedCallback(Collider2D col)
+        {
+            if (col.CompareTag(Tag.Player))
+            {
+                _playerInTriggerZone = false;
             }
         }
 

@@ -1,3 +1,4 @@
+using Platformer.Game.Common;
 using Platformer.Game.Player;
 using Platformer.Service.Input;
 using Platformer.Service.LevelCompletion;
@@ -36,6 +37,7 @@ namespace Platformer.Infrastructure.State
             _missionService.Initialize();
             _missionService.Begin();
             PlayerMovement playerMovement = Object.FindObjectOfType<PlayerMovement>();
+            UnitHp playerHp = playerMovement.GetComponent<UnitHp>();
             _inputService.Initialize();
         }
 
