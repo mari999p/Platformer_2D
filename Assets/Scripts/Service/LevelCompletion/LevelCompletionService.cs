@@ -41,7 +41,6 @@ namespace Platformer.Service.LevelCompletion
 
         private void MissionCompletedCallback()
         {
-            this.Error();
             // TODO: Show win screen
             if (_levelLoadingService.HasNextLevel())
             {

@@ -17,7 +17,7 @@ namespace Platformer.Game.Objects.Door
 
         private void Awake()
         {
-            _animator = GetComponent<Animator>(); //Todo
+            _animator = GetComponent<Animator>();
         }
 
         #endregion

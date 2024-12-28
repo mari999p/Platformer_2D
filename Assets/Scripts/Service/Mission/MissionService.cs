@@ -15,8 +15,9 @@ namespace Platformer.Service.Mission
         private readonly MissionFactory _factory = new();
 
         private Mission _currentMission;
-        private MissionTimer _missionTimer;
         private GameOverScreen _gameOverScreen;
+        private MissionTimer _missionTimer;
+
         #endregion
 
         #region Events
@@ -39,7 +40,11 @@ namespace Platformer.Service.Mission
 
         public void Begin()
         {
-            Assert.IsNotNull(_currentMission);
+            if (_currentMission == null)
+            {
+                return;
+            }
+
             _currentMission.Begin();
             OnStarted?.Invoke();
         }
@@ -62,7 +67,6 @@ namespace Platformer.Service.Mission
             MissionConditionHolder holder = FindObjectOfType<MissionConditionHolder>();
             if (holder == null)
             {
-                this.Error("MissionConditionHolder not found in the scene.");
                 return;
             }
 
@@ -93,6 +97,7 @@ namespace Platformer.Service.Mission
         {
             OnCompleted?.Invoke();
         }
+
         private void MissionFailedCallback()
         {
             _gameOverScreen.ShowGameOver();

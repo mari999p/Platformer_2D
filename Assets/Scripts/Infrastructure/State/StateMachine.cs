@@ -39,6 +39,5 @@ namespace Platformer.Infrastructure.State
         }
 
         #endregion
-        
     }
 }
