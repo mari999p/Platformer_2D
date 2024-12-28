@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Platformer.Game.Player.Base
+namespace Platformer.Game.Player
 {
     public class PlayerInventory : MonoBehaviour
     {

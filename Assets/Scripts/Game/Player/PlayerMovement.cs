@@ -19,10 +19,12 @@ namespace Platformer.Game.Player
         [SerializeField] private float _speed = 10;
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private float _jumpForce = 5;
+
         [Header("Ground Check")]
         [SerializeField] private LayerMask _groundLayer;
         [SerializeField] private Transform _groundCheck;
         [SerializeField] private float _groundCheckRadius = 0.1f;
+
         private IInputService _inputService;
         private bool _isGrounded;
         private bool _wasGrounded;
@@ -43,7 +45,6 @@ namespace Platformer.Game.Player
 
         private void Start()
         {
-            
             _inputService.OnJump += Jump;
         }
 

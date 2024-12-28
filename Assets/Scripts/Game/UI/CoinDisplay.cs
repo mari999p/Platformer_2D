@@ -1,3 +1,4 @@
+using Platformer.Game.Player;
 using Platformer.Game.Player.Base;
 using TMPro;
 using UnityEngine;

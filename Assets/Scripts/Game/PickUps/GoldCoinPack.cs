@@ -1,5 +1,5 @@
 using Platformer.Game.Common;
-using Platformer.Game.Player.Base;
+using Platformer.Game.Player;
 using UnityEngine;
 
 namespace Platformer.Game.PickUps
