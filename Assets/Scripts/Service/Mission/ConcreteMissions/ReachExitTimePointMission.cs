@@ -1,3 +1,4 @@
+using System;
 using Platformer.Game.Common;
 using Platformer.Service.Mission.Conditions;
 using Platformer.Utils.Log;
@@ -13,9 +14,9 @@ namespace Platformer.Service.Mission.ConcreteMissions
 
         #endregion
 
-        #region Properties
+        #region Events
 
-        public float ElapsedTime => _elapsedTime;
+        public event Action OnFailed;
 
         #endregion
 
@@ -29,6 +30,7 @@ namespace Platformer.Service.Mission.ConcreteMissions
         public void InvokeFailure()
         {
             this.Log("Миссия не выполнена: время истекло!");
+            OnFailed?.Invoke();
             Stop();
         }
 

@@ -1,6 +1,7 @@
 using System;
 using Platformer.Game.UI;
 using Platformer.Service.Mission.ConcreteMissions;
+using Platformer.UI;
 using Platformer.Utils.Log;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -15,7 +16,7 @@ namespace Platformer.Service.Mission
 
         private Mission _currentMission;
         private MissionTimer _missionTimer;
-
+        private GameOverScreen _gameOverScreen;
         #endregion
 
         #region Events
@@ -56,6 +57,8 @@ namespace Platformer.Service.Mission
 
         public void Initialize()
         {
+            _gameOverScreen = FindObjectOfType<GameOverScreen>();
+            Assert.IsNotNull(_gameOverScreen, "GameOverScreen not found in the scene.");
             MissionConditionHolder holder = FindObjectOfType<MissionConditionHolder>();
             if (holder == null)
             {
@@ -65,6 +68,11 @@ namespace Platformer.Service.Mission
 
             _currentMission = _factory.Create(holder.MissionCondition);
             _currentMission.OnCompleted += MissionCompletedCallback;
+            if (_currentMission is ReachExitTimePointMission timePointMission)
+            {
+                timePointMission.OnFailed += MissionFailedCallback;
+            }
+
             _missionTimer = FindObjectOfType<MissionTimer>();
 
             if (_missionTimer != null)
@@ -84,6 +92,10 @@ namespace Platformer.Service.Mission
         private void MissionCompletedCallback()
         {
             OnCompleted?.Invoke();
+        }
+        private void MissionFailedCallback()
+        {
+            _gameOverScreen.ShowGameOver();
         }
 
         #endregion
