@@ -2117,7 +2117,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.38, y: 0.31}
+  m_Size: {x: 0.74, y: 0.74}
   m_EdgeRadius: 0
 --- !u!114 &183766860
 MonoBehaviour:
@@ -6986,7 +6986,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 40.09, y: 22.42, z: -10}
+  m_LocalPosition: {x: 39.585556, y: 23.279999, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9331,6 +9331,8 @@ GameObject:
   - component: {fileID: 833877638}
   - component: {fileID: 833877640}
   - component: {fileID: 833877641}
+  - component: {fileID: 833877642}
+  - component: {fileID: 833877643}
   m_Layer: 13
   m_Name: Exit Point
   m_TagString: Untagged
@@ -9370,7 +9372,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.26, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -9381,7 +9383,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.65, y: 0.96}
   m_EdgeRadius: 0
 --- !u!4 &833877639
 Transform:
@@ -9462,6 +9464,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 898a863caf294604847a54aeed501dac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &833877642
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 833877636}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c58e21aaed541da459b4b7ea1afdbc04, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &833877643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 833877636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7520978b16143f599285d25c45f21ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 833877642}
 --- !u!1 &844952498
 GameObject:
   m_ObjectHideFlags: 0
@@ -69590,7 +69626,7 @@ Transform:
   m_GameObject: {fileID: 1655689824}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 40.09, y: 22.42, z: -10}
+  m_LocalPosition: {x: 39.585556, y: 23.279999, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -70614,7 +70650,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.2}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -70625,7 +70661,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.4, y: 0.31}
+  m_Size: {x: 0.63, y: 0.91}
   m_EdgeRadius: 0
 --- !u!114 &1732715557
 MonoBehaviour:
@@ -70724,7 +70760,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _observer: {fileID: 833877641}
-  _timeLimit: 5
+  _timeLimit: 121
+  _doorAnimation: {fileID: 833877643}
+  _playerAnimation: {fileID: 1521842458}
 --- !u!114 &1750375880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71497,8 +71535,8 @@ MonoBehaviour:
   m_YDamping: 1
   m_ZDamping: 1
   m_TargetMovementOnly: 1
-  m_ScreenX: 0.5
-  m_ScreenY: 0.5
+  m_ScreenX: 0.7
+  m_ScreenY: 0.6
   m_CameraDistance: 10
   m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
@@ -81825,11 +81863,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5932984966721679268, guid: 5fa2f97585999e84499c3a043846937d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 37.8
+      value: 40.14
       objectReference: {fileID: 0}
     - target: {fileID: 5932984966721679268, guid: 5fa2f97585999e84499c3a043846937d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 21.4
+      value: 21.46
       objectReference: {fileID: 0}
     - target: {fileID: 5932984966721679268, guid: 5fa2f97585999e84499c3a043846937d, type: 3}
       propertyPath: m_LocalPosition.z
