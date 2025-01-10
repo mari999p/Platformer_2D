@@ -1,6 +1,5 @@
 using System.Collections;
 using Platformer.Game.Common;
-using Platformer.Game.Enemy;
 using Platformer.Game.Enemy.EnemyAttacks;
 using UnityEngine;
 
@@ -144,6 +143,5 @@ namespace Platformer.Game.Objects.Bomb
         }
 
         #endregion
-        
     }
 }

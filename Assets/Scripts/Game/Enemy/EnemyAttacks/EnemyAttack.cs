@@ -57,7 +57,7 @@ namespace Platformer.Game.Enemy.EnemyAttacks
 
         #region Protected methods
 
-        protected void OnPerformAttack()
+        protected virtual void OnPerformAttack()
         {
             _animation.EnemyAttack();
         }

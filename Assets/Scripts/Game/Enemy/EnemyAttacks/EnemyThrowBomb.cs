@@ -86,7 +86,7 @@ namespace Platformer.Game.Enemy.EnemyAttacks
                     if (bombRigidbody != null)
                     {
                         Vector2 throwDirection = (playerPosition - (Vector2)transform.position).normalized;
-                        throwDirection.y = 1; 
+                        throwDirection.y = 1;
                         bombRigidbody.AddForce(throwDirection * _throwForce, ForceMode2D.Impulse);
                     }
                 }

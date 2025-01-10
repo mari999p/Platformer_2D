@@ -1,6 +1,8 @@
 using System;
+using JetBrains.Annotations;
 using Platformer.Game.Common;
 using Platformer.Game.Player.Animation;
+using Platformer.UI;
 using UnityEngine;
 
 namespace Platformer.Game.Player
@@ -15,7 +17,7 @@ namespace Platformer.Game.Player
         [SerializeField] private PlayerMovement _movement;
         [SerializeField] private PlayerAttack _attack;
         [SerializeField] private PlayerAnimation _animation;
-
+        [SerializeField] private GameOverScreen _gameOverScreen;
         #endregion
 
         #region Events
@@ -60,7 +62,7 @@ namespace Platformer.Game.Player
 
         #region Private methods
 
-        private void Die()
+        public void Die()
         {
             IsDead = true;
             _collider.enabled = false;
@@ -70,6 +72,7 @@ namespace Platformer.Game.Player
             _rb.velocity = Vector2.zero;
             _rb.bodyType = RigidbodyType2D.Kinematic;
             OnOccurred?.Invoke();
+            _gameOverScreen.ShowGameOver();
         }
 
         private void HpChangedCallback(int hp)
