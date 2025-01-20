@@ -10,11 +10,22 @@ namespace Platformer.Game.Enemy.InteractionZone
         [SerializeField] private TriggerObserver _moveObserver;
         [SerializeField] private EnemyIdle _idle;
         [SerializeField] private EnemyMovement _movement;
+
+        [SerializeField] private Vector2 _minBounds;
+        [SerializeField] private Vector2 _maxBounds;
         private TriggerObserver _stopChasingObserver;
 
         #endregion
 
         #region Unity lifecycle
+
+        private void Update()
+        {
+            Vector3 clampedPosition = transform.position;
+            clampedPosition.x = Mathf.Clamp(clampedPosition.x, _minBounds.x, _maxBounds.x);
+            clampedPosition.y = Mathf.Clamp(clampedPosition.y, _minBounds.y, _maxBounds.y);
+            transform.position = clampedPosition;
+        }
 
         private void OnEnable()
         {

@@ -7,8 +7,8 @@ namespace Platformer.Game.Player
     {
         #region Variables
 
-        [SerializeField] private int _coins;
-
+        private static  int _coins;
+    
         #endregion
 
         #region Events
@@ -18,7 +18,10 @@ namespace Platformer.Game.Player
         #endregion
 
         #region Public methods
-
+        private void Awake()
+        {
+            OnCoinsChanged?.Invoke();
+        }
         public void AddCoins(int amount)
         {
             _coins += amount;

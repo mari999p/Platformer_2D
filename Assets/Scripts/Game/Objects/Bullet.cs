@@ -23,14 +23,14 @@ namespace Platformer.Game.Objects
             StartCoroutine(DestroyWithLifetimeDelay());
         }
 
-        private void OnTriggerEnter2D(Collider2D other)
+        private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (other.TryGetComponent(out UnitHp hp))
+            if (collision.collider.TryGetComponent(out UnitHp hp))
             {
                 hp.Change(-_damage);
             }
 
-            Destroy(gameObject);
+            // Destroy(gameObject);
         }
         public void SetDirection(Vector2 direction)
         {

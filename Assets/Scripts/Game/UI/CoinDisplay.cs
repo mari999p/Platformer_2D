@@ -1,5 +1,4 @@
 using Platformer.Game.Player;
-using Platformer.Game.Player.Base;
 using TMPro;
 using UnityEngine;
 
@@ -38,7 +37,7 @@ namespace Platformer.Game.UI
 
         private void UpdateCoinText()
         {
-            _goldText.text = $"Coins: {_playerInventory.GetCoins()}";
+            _goldText.text = $"Coins:{_playerInventory.GetCoins()}";
         }
 
         #endregion

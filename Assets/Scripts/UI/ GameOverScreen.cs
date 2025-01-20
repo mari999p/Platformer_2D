@@ -71,7 +71,7 @@ namespace Platformer.UI
         private void UpdateScoreText()
         {
             int coinsCollected = _playerInventory.GetCoins();
-            _scoreText.text = $"Score: {coinsCollected}";
+            _scoreText.text = $"Score:{coinsCollected}";
         }
 
         #endregion

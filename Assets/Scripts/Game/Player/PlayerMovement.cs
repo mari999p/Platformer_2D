@@ -1,5 +1,4 @@
 using Platformer.Game.Player.Animation;
-using Platformer.Game.Player.Base;
 using Platformer.Service.Input;
 using UnityEngine;
 using Zenject;

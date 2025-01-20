@@ -66,7 +66,6 @@ namespace Platformer.Game.UI
 
         private void HandleMissionCompleted()
         {
-            _timeDisplay.text = "Mission Complete!";
         }
 
         #endregion

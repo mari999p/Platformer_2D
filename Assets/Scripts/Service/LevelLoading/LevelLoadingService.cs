@@ -1,4 +1,6 @@
+using System.Collections;
 using Platformer.Infrastructure.State;
+using Platformer.Service.Coroutine;
 using UnityEngine;
 
 namespace Platformer.Service.LevelLoading
@@ -8,9 +10,9 @@ namespace Platformer.Service.LevelLoading
         #region Variables
 
         private const string ConfigPath = "Configs/Levels/LevelLoadingConfig";
+        private readonly CoroutineRunner _coroutineRunner;
 
         private readonly StateMachine _stateMachine;
-
         private LevelLoadingConfig _config;
         private int _levelIndex;
 
@@ -18,9 +20,10 @@ namespace Platformer.Service.LevelLoading
 
         #region Setup/Teardown
 
-        public LevelLoadingService(StateMachine stateMachine)
+        public LevelLoadingService(StateMachine stateMachine, CoroutineRunner coroutineRunner)
         {
             _stateMachine = stateMachine;
+            _coroutineRunner = coroutineRunner;
         }
 
         #endregion
@@ -60,6 +63,12 @@ namespace Platformer.Service.LevelLoading
 
         private void EnterLevel()
         {
+            _coroutineRunner.StartCoroutine(EnterLevelWithDelay());
+        }
+
+        private IEnumerator EnterLevelWithDelay()
+        {
+            yield return new WaitForSeconds(1f);
             _stateMachine.Enter<LoadGameState, string>(_config.LevelSceneNames[_levelIndex]);
         }
 
