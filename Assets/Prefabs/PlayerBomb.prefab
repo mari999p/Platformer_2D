@@ -171,7 +171,7 @@ MonoBehaviour:
   _bombAnimation: {fileID: 87483070043714854}
   _layer:
     serializedVersion: 2
-    m_Bits: 2432
+    m_Bits: 2312
   _speed: 0
   _lifetime: 2
   _damage: 5

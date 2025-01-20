@@ -15,13 +15,13 @@ MonoBehaviour:
   NeedOpenSceneOnStart: 1
   StartScene:
     Name: Level2
-    Index: 2
+    Index: 3
     Path: Assets/Scenes/Level2.unity
     GuidHex: c489277b11b626b4a878268b5d1b7840
   NeedOpenSceneOnStop: 1
   StopScene:
     Name: Level2
-    Index: 2
+    Index: 3
     Path: Assets/Scenes/Level2.unity
     GuidHex: c489277b11b626b4a878268b5d1b7840
   AllScenes:
@@ -29,11 +29,15 @@ MonoBehaviour:
     Index: 0
     Path: Assets/Scenes/BootstrapScene.unity
     GuidHex: 608046a143af6de4795132a5e19bb7f8
-  - Name: Level1
+  - Name: Star Scene
     Index: 1
+    Path: Assets/Scenes/Star Scene.unity
+    GuidHex: ecc3adce00a475049bc7f5d0368ec1db
+  - Name: Level1
+    Index: 2
     Path: Assets/Scenes/Level1.unity
     GuidHex: 2cda990e2423bbf4892e6590ba056729
   - Name: Level2
-    Index: 2
+    Index: 3
     Path: Assets/Scenes/Level2.unity
     GuidHex: c489277b11b626b4a878268b5d1b7840

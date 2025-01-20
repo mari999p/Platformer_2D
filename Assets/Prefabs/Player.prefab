@@ -116,8 +116,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbedd7a9c06a40d58812bca97a63ba85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _start: 10
-  _max: 10
+  _start: 50
+  _max: 50
   _current: 0
 --- !u!114 &6773473933885976874
 MonoBehaviour:
@@ -176,6 +176,7 @@ MonoBehaviour:
   _movement: {fileID: 6773473933885976874}
   _attack: {fileID: 4173238154471341330}
   _animation: {fileID: 8858578272735827080}
+  _gameOverScreen: {fileID: 0}
 --- !u!114 &8753554047687658327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,7 +189,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e24d0f3ff9d4587a2f4e74054d7ff08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _coins: 0
 --- !u!1 &875802658725863241
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,7 +477,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1349563921
   m_SortingLayer: 2
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: ee7f32971d4ed064aaaf6184cf22425d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
