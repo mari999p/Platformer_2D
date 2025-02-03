@@ -3,17 +3,28 @@ using UnityEngine;
 
 namespace Platformer.Game.Enemy.EnemyAttacks
 {
-    public class RangeEnemyBulletAttack: EnemyAttack
+    public class RangeEnemyBulletAttack : EnemyAttack
     {
+        #region Variables
+
         [Header(nameof(RangeEnemyAttack))]
         [SerializeField] private Bullet _bulletPrefab;
         [SerializeField] private Transform _spawnPointTransform;
+
+        #endregion
+
+        #region Unity lifecycle
 
         protected override void Update()
         {
             base.Update();
             Rotate();
         }
+
+        #endregion
+
+        #region Protected methods
+
         protected override void OnPerformAttack()
         {
             base.OnPerformAttack();
@@ -21,7 +32,9 @@ namespace Platformer.Game.Enemy.EnemyAttacks
             newBullet.SetDirection(_spawnPointTransform.right);
         }
 
-     
+        #endregion
+
+        #region Private methods
 
         private void Rotate()
         {
@@ -36,5 +49,7 @@ namespace Platformer.Game.Enemy.EnemyAttacks
             transform.localScale = new Vector3(Mathf.Sign(directionToTarget) * -Mathf.Abs(transform.localScale.x),
                 transform.localScale.y, transform.localScale.z);
         }
+
+        #endregion
     }
 }

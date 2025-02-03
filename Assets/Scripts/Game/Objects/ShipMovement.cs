@@ -1,4 +1,6 @@
+using System.Collections;
 using Platformer.Game.Player;
+using Platformer.UI;
 using UnityEngine;
 
 namespace Platformer.Game.Objects
@@ -11,6 +13,11 @@ namespace Platformer.Game.Objects
         [SerializeField] private float _shipSpeed = 5f;
         [SerializeField] private PlayerMovement _playerMovement;
         [SerializeField] private Collider2D _shipCollider;
+        [SerializeField] private GameEndScreen _gameEndScreen;
+
+        [Header("Game End Settings")]
+        [SerializeField] private Vector3 _gameEndPosition;
+        [SerializeField] private float _endGameDelay = 2f;
         private Vector2 _playerInitialOffset;
 
         #endregion
@@ -20,6 +27,10 @@ namespace Platformer.Game.Objects
         private void Start()
         {
             _playerMovement = FindObjectOfType<PlayerMovement>();
+            if (_gameEndScreen != null)
+            {
+                _gameEndScreen.gameObject.SetActive(false);
+            }
         }
 
         private void Update()
@@ -28,6 +39,10 @@ namespace Platformer.Game.Objects
             {
                 MaintainPlayerPosition();
                 MoveShip();
+                if (HasReachedEndPosition())
+                {
+                    EndGame();
+                }
             }
         }
 
@@ -41,7 +56,32 @@ namespace Platformer.Game.Objects
 
         #endregion
 
+        #region Public methods
+
+        public void MoveShip()
+        {
+            transform.Translate(Vector2.right * _shipSpeed * Time.deltaTime);
+        }
+
+        #endregion
+
         #region Private methods
+
+        private void DeactivateObjects()
+        {
+            Destroy(_playerMovement.gameObject);
+            Destroy(gameObject);
+        }
+
+        private void EndGame()
+        {
+            StartCoroutine(ShowGameEndAfterDelay());
+        }
+
+        private bool HasReachedEndPosition()
+        {
+            return transform.position.x >= _gameEndPosition.x;
+        }
 
         private bool IsPlayerOnShip()
         {
@@ -63,9 +103,11 @@ namespace Platformer.Game.Objects
             _playerMovement.transform.position = transform.position + (Vector3)_playerInitialOffset;
         }
 
-        private void MoveShip()
+        private IEnumerator ShowGameEndAfterDelay()
         {
-            transform.Translate(Vector2.right * _shipSpeed * Time.deltaTime);
+            yield return new WaitForSeconds(_endGameDelay);
+            _gameEndScreen.ShowGameEnd();
+            DeactivateObjects();
         }
 
         #endregion

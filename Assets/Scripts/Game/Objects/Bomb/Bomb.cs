@@ -1,6 +1,7 @@
 using System.Collections;
 using Platformer.Game.Common;
 using Platformer.Game.Enemy.EnemyAttacks;
+using Platformer.Service.Audio;
 using UnityEngine;
 
 namespace Platformer.Game.Objects.Bomb
@@ -18,6 +19,9 @@ namespace Platformer.Game.Objects.Bomb
         [SerializeField] private float _blastRadius = 5f;
         [SerializeField] private float _explosionForce = 10f;
         [SerializeField] private float _defuseAnimationDuration = 5f;
+
+        [SerializeField] private AudioClip _explosionSound;
+        [SerializeField] private AudioService _audioService;
         private Vector3 _direction;
         private bool _isDefused;
 
@@ -29,6 +33,7 @@ namespace Platformer.Game.Objects.Bomb
         {
             InitializeBomb();
             StartCoroutine(DestroyWithLifetimeDelay());
+            _audioService = FindObjectOfType<AudioService>();
         }
 
         private void Update()
@@ -115,6 +120,7 @@ namespace Platformer.Game.Objects.Bomb
         private void Explode()
         {
             _bombAnimation.TriggerExplosion();
+            PlayExplosionSound();
             Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _blastRadius, _layer);
             foreach (Collider2D collider1 in colliders)
             {
@@ -140,6 +146,14 @@ namespace Platformer.Game.Objects.Bomb
             _rb.constraints = RigidbodyConstraints2D.FreezeRotation;
             _bombAnimation.TriggerIgnite();
             _rb.velocity = _direction * _speed;
+        }
+
+        private void PlayExplosionSound()
+        {
+            if (_audioService != null && _explosionSound != null)
+            {
+                _audioService.PlaySfx(_explosionSound);
+            }
         }
 
         #endregion

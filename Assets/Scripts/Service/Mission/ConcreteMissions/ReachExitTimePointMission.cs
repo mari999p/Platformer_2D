@@ -1,7 +1,6 @@
 using System;
 using Platformer.Game.Common;
 using Platformer.Service.Mission.Conditions;
-using Platformer.Utils.Log;
 using UnityEngine;
 
 namespace Platformer.Service.Mission.ConcreteMissions
@@ -30,7 +29,6 @@ namespace Platformer.Service.Mission.ConcreteMissions
 
         public void InvokeFailure()
         {
-            this.Log("Миссия не выполнена: время истекло!");
             OnFailed?.Invoke();
             Stop();
         }

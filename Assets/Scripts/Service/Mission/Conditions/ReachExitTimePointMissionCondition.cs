@@ -19,7 +19,6 @@ namespace Platformer.Service.Mission.Conditions
         #region Properties
 
         public DoorAnimation DoorAnimation => _doorAnimation;
-
         public TriggerObserver Observer => _observer;
         public PlayerAnimation PlayerAnimation => _playerAnimation;
         public float TimeAllowed => _timeLimit;

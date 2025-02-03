@@ -7,8 +7,8 @@ namespace Platformer.Game.Player
     {
         #region Variables
 
-        private static  int _coins;
-    
+        private static int _coins;
+
         #endregion
 
         #region Events
@@ -17,11 +17,17 @@ namespace Platformer.Game.Player
 
         #endregion
 
-        #region Public methods
+        #region Unity lifecycle
+
         private void Awake()
         {
             OnCoinsChanged?.Invoke();
         }
+
+        #endregion
+
+        #region Public methods
+
         public void AddCoins(int amount)
         {
             _coins += amount;

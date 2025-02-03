@@ -15,6 +15,9 @@ namespace Platformer.Game.Enemy.EnemyAttacks
         [SerializeField] private LayerMask _bombLayer;
         [SerializeField] private float _eatRadius = 2f;
 
+        [SerializeField] private AudioClip _eatingSound;
+        [SerializeField] private AudioSource _audioSource;
+
         #endregion
 
         #region Unity lifecycle
@@ -55,11 +58,20 @@ namespace Platformer.Game.Enemy.EnemyAttacks
             DestroyBomb(bomb);
         }
 
+        private void PlayEatingSound()
+        {
+            if (_audioSource != null && _eatingSound != null)
+            {
+                _audioSource.PlayOneShot(_eatingSound);
+            }
+        }
+
         private void StartEating(Bomb bomb)
         {
             if (!isEating)
             {
                 isEating = true;
+                PlayEatingSound();
                 _eatAnimation.TriggerSwalowBomb();
                 bomb.Defuse();
                 StartCoroutine(DestroyBombAfterAnimation(bomb));

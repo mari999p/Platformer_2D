@@ -10,10 +10,17 @@ namespace Platformer.UI
     {
         #region Variables
 
+        private static readonly int Explode = Animator.StringToHash("Explode");
+
         [SerializeField] private Button _playButton;
         [SerializeField] private Animator _explosionAnimator;
+        [Header("Audio")]
+        [SerializeField] private AudioClip _buttonClickSound;
+        [SerializeField] private AudioSource _audioSource;
+
+        private bool _buttonClicked;
         private LevelLoadingService _levelLoadingService;
-        private bool _buttonClicked = false;
+
         #endregion
 
         #region Setup/Teardown
@@ -40,8 +47,12 @@ namespace Platformer.UI
         private void OnPlayButtonClicked()
         {
             if (_buttonClicked)
+            {
                 return;
-            _explosionAnimator.SetTrigger("Explode");
+            }
+
+            _audioSource.PlayOneShot(_buttonClickSound);
+            _explosionAnimator.SetTrigger(Explode);
             _buttonClicked = true;
             StartCoroutine(StartGameAfterAnimation());
         }

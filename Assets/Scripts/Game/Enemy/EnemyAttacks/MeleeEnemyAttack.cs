@@ -13,6 +13,10 @@ namespace Platformer.Game.Enemy.EnemyAttacks
         [SerializeField] private float _hitRadius = 1f;
         [SerializeField] private int _damage = 1;
         [SerializeField] private float _knockbackForce = 5f;
+
+        [SerializeField] private AudioClip _attackSound;
+        [SerializeField] private AudioSource _audioSource;
+
         #endregion
 
         #region Unity lifecycle
@@ -62,6 +66,15 @@ namespace Platformer.Game.Enemy.EnemyAttacks
         private void AttackHitCallback()
         {
             Attack();
+            PlayAttackSound();
+        }
+
+        private void PlayAttackSound()
+        {
+            if (_attackSound != null)
+            {
+                _audioSource.PlayOneShot(_attackSound);
+            }
         }
 
         #endregion

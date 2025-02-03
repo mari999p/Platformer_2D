@@ -16,6 +16,7 @@ namespace Platformer.UI
         [SerializeField] private Button _retryButton;
         [SerializeField] private TMP_Text _scoreText;
         [SerializeField] private PlayerInventory _playerInventory;
+
         private IInputService _inputService;
         private IRestartService _restartService;
 

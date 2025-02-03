@@ -64,9 +64,7 @@ namespace Platformer.Game.UI
 
         #region Private methods
 
-        private void HandleMissionCompleted()
-        {
-        }
+        private void HandleMissionCompleted() { }
 
         #endregion
     }

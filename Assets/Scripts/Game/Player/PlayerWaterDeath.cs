@@ -1,3 +1,4 @@
+using Platformer.Game.Common;
 using UnityEngine;
 
 namespace Platformer.Game.Player
@@ -14,7 +15,7 @@ namespace Platformer.Game.Player
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.CompareTag("Player"))
+            if (collision.CompareTag(Tag.Player))
             {
                 _playerDeath = collision.GetComponent<PlayerDeath>();
 

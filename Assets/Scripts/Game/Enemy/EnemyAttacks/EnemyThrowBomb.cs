@@ -17,6 +17,9 @@ namespace Platformer.Game.Enemy.EnemyAttacks
         [SerializeField] private EnemyDeath _enemyDeath;
         [SerializeField] private float _defuseRadius = 2f;
         [SerializeField] private float _throwForce = 5f;
+
+        [SerializeField] private AudioClip _throwSound;
+        [SerializeField] private AudioSource _audioSource;
         private bool _bombNearby;
 
         #endregion
@@ -26,6 +29,7 @@ namespace Platformer.Game.Enemy.EnemyAttacks
         private void Awake()
         {
             _enemyDeath.OnHappened += OnEnemyDeath;
+            _audioSource = gameObject.AddComponent<AudioSource>();
         }
 
         private void Update()
@@ -88,6 +92,8 @@ namespace Platformer.Game.Enemy.EnemyAttacks
                         Vector2 throwDirection = (playerPosition - (Vector2)transform.position).normalized;
                         throwDirection.y = 1;
                         bombRigidbody.AddForce(throwDirection * _throwForce, ForceMode2D.Impulse);
+
+                        PlayThrowSound();
                     }
                 }
             }
@@ -98,6 +104,14 @@ namespace Platformer.Game.Enemy.EnemyAttacks
         private void OnEnemyDeath()
         {
             enabled = false;
+        }
+
+        private void PlayThrowSound()
+        {
+            if (_throwSound != null && _audioSource != null)
+            {
+                _audioSource.PlayOneShot(_throwSound);
+            }
         }
 
         #endregion

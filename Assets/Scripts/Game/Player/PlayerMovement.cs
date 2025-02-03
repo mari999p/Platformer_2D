@@ -24,6 +24,10 @@ namespace Platformer.Game.Player
         [SerializeField] private Transform _groundCheck;
         [SerializeField] private float _groundCheckRadius = 0.1f;
 
+        [Header("Audio")]
+        [SerializeField] private AudioSource _audioSource;
+        [SerializeField] private AudioClip _jumpSound;
+
         private IInputService _inputService;
         private bool _isGrounded;
         private bool _wasGrounded;
@@ -92,6 +96,7 @@ namespace Platformer.Game.Player
             {
                 _rb.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
                 _animation.TriggerJump();
+                PlayJumpSound();
             }
         }
 
@@ -102,6 +107,14 @@ namespace Platformer.Game.Player
                 Vector2 velocity = new(_inputService.MoveDirection.x * _speed, _rb.velocity.y);
                 _rb.velocity = velocity;
                 _animation.SetMovement(velocity.magnitude);
+            }
+        }
+
+        private void PlayJumpSound()
+        {
+            if (_audioSource != null && _jumpSound != null)
+            {
+                _audioSource.PlayOneShot(_jumpSound);
             }
         }
 
