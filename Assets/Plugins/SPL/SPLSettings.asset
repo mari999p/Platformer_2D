@@ -14,24 +14,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NeedOpenSceneOnStart: 1
   StartScene:
-    Name: Star
+    Name: Start
     Index: 1
-    Path: Assets/Scenes/Star.unity
+    Path: Assets/Scenes/Start.unity
     GuidHex: ecc3adce00a475049bc7f5d0368ec1db
   NeedOpenSceneOnStop: 1
   StopScene:
-    Name: Level1
-    Index: 2
-    Path: Assets/Scenes/Level1.unity
-    GuidHex: 2cda990e2423bbf4892e6590ba056729
+    Name: Level2
+    Index: 3
+    Path: Assets/Scenes/Level2.unity
+    GuidHex: c489277b11b626b4a878268b5d1b7840
   AllScenes:
   - Name: BootstrapScene
     Index: 0
     Path: Assets/Scenes/BootstrapScene.unity
     GuidHex: 608046a143af6de4795132a5e19bb7f8
-  - Name: Star
+  - Name: Start
     Index: 1
-    Path: Assets/Scenes/Star.unity
+    Path: Assets/Scenes/Start.unity
     GuidHex: ecc3adce00a475049bc7f5d0368ec1db
   - Name: Level1
     Index: 2
@@ -41,11 +41,11 @@ MonoBehaviour:
     Index: 3
     Path: Assets/Scenes/Level2.unity
     GuidHex: c489277b11b626b4a878268b5d1b7840
-  - Name: GameEnd
+  - Name: Start
     Index: 4
-    Path: Assets/Scenes/GameEnd.unity
-    GuidHex: 01aceb0b5806f3b4ababbeae316ceff6
-  - Name: Star
+    Path: Assets/Scenes/Start.unity
+    GuidHex: ecc3adce00a475049bc7f5d0368ec1db
+  - Name: Start
     Index: 5
-    Path: Assets/Scenes/Star.unity
+    Path: Assets/Scenes/Start.unity
     GuidHex: ecc3adce00a475049bc7f5d0368ec1db

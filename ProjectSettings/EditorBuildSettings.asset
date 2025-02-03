@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/BootstrapScene.unity
     guid: 608046a143af6de4795132a5e19bb7f8
   - enabled: 1
-    path: Assets/Scenes/Star Scene.unity
+    path: Assets/Scenes/Star.unity
     guid: ecc3adce00a475049bc7f5d0368ec1db
   - enabled: 1
     path: Assets/Scenes/Level1.unity
@@ -18,9 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Level2.unity
     guid: c489277b11b626b4a878268b5d1b7840
   - enabled: 1
-    path: Assets/Scenes/GameEnd.unity
-    guid: 01aceb0b5806f3b4ababbeae316ceff6
-  - enabled: 1
     path: Assets/Scenes/Star.unity
+    guid: ecc3adce00a475049bc7f5d0368ec1db
+  - enabled: 1
+    path: Assets/Scenes/Start.unity
     guid: ecc3adce00a475049bc7f5d0368ec1db
   m_configObjects: {}

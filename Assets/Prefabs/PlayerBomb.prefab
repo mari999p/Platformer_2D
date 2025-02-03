@@ -178,6 +178,8 @@ MonoBehaviour:
   _blastRadius: 2.07
   _explosionForce: 8.24
   _defuseAnimationDuration: 3
+  _explosionSound: {fileID: 8300000, guid: 7e26c9daf4c32483b9c2790e662d3f1b, type: 3}
+  _audioService: {fileID: 8365068968803904632, guid: eb99d59c42958f04baebe471addad04e, type: 3}
 --- !u!50 &7874132314497934216
 Rigidbody2D:
   serializedVersion: 4
